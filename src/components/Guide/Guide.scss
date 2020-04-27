@@ -1,0 +1,32 @@
+@import '../../assets/css/fonts';
+
+#guide {
+    @include font-body;
+
+    background-color: #FAF7EF;
+    padding: 15px 45px 30px;
+
+    em {
+        @include font-body-bold-italic;
+    }
+
+    h2 {
+        @include font-heading;
+    }
+
+    ol {
+        padding-left: 20px;
+
+        ol li {
+            padding-top: 10px;
+        }
+    }
+
+    strong {
+        @include font-body-bold;
+    }
+
+    .secret {
+        margin-top: 12px;
+    }
+}

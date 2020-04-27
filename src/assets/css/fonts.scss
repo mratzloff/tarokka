@@ -1,0 +1,70 @@
+@font-face {
+    font-family: HerrVonMuellerhoff;
+    src: url(/fonts/HerrVonMuellerhoff-Regular.ttf);
+}
+
+@font-face {
+    font-family: LibreBaskerville;
+    src: url(/fonts/LibreBaskerville-Regular.otf);
+}
+
+@font-face {
+    font-family: TeXGyreBonum;
+    src: url(/fonts/TeXGyreBonum-Regular.otf);
+}
+
+@font-face {
+    font-family: TeXGyreBonum-Bold;
+    src: url(/fonts/TeXGyreBonum-Bold.otf);
+}
+
+@font-face {
+    font-family: TeXGyreBonum-BoldItalic;
+    src: url(/fonts/TeXGyreBonum-BoldItalic.otf);
+}
+
+@font-face {
+    font-family: TeXGyreBonum-Italic;
+    src: url(/fonts/TeXGyreBonum-Italic.otf);
+}
+
+@mixin font-heading {
+    border-bottom: 2px solid #D0B47B;
+    color: #58170D;
+    font-family: LibreBaskerville;
+    font-size: 20px;
+    font-variant: small-caps;
+    letter-spacing: -0.5px;
+    padding-bottom: 3px;
+    padding-top: 15px;
+}
+
+@mixin font-body {
+    color: #111;
+    font-family: TeXGyreBonum;
+    font-size: 13px;
+    letter-spacing: -0.08px;
+    line-height: 19px;
+}
+
+@mixin font-body-bold {
+    @include font-body;
+
+    font-family: TeXGyreBonum-Bold;
+    font-weight: 100;
+}
+
+@mixin font-body-bold-italic {
+    @include font-body;
+
+    font-family: TeXGyreBonum-BoldItalic;
+    font-style: normal;
+    font-weight: 100;
+}
+
+@mixin font-body-italic {
+    @include font-body;
+
+    font-family: TeXGyreBonum-Italic;
+    font-style: normal;
+}

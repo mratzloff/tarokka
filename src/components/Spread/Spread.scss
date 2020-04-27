@@ -1,0 +1,104 @@
+$edition-dimensions: (
+    "e2": (
+        "height": 527px,
+        "scale": 0.45,
+        "width": 342px,
+    ),
+    "e5": (
+        "height": 840px,
+        "scale": 0.28,
+        "width": 600px,
+    ),
+);
+
+#spread {
+    background-image: url(../../assets/images/background.jpg);
+    height: 100vh;
+    width: 100vw;
+
+    #cards {
+        display: grid;
+        grid-template-areas:
+            ". b ."
+            "a e c"
+            ". d .";
+        margin: 0 auto;
+        padding: 50px 0;
+    }
+    
+    #tome {
+        grid-area: a;
+    }
+    
+    #ravenkind {
+        grid-area: b;
+    }
+    
+    #sunsword {
+        grid-area: c;
+    }
+    
+    #ally {
+        grid-area: d;
+    }
+    
+    #strahd {
+        grid-area: e;
+    }
+    
+    @each $edition, $dimensions in $edition-dimensions {
+        $height: map-get($dimensions, "height");
+        $scale: map-get($dimensions, "scale");
+        $width: map-get($dimensions, "width");
+    
+        #cards.#{$edition} {
+            width: 3 * (($width * $scale) + 40px);
+    
+            .card,
+            .card-container {
+                height: $height * $scale;
+                width: $width * $scale;
+            }
+        }
+    }
+
+    .card-container {
+        padding: 20px;
+        perspective: 1000px;
+    
+        &.flipped .card {
+            transform: rotateY(180deg);
+        }
+    }
+    
+    .card {
+        position: relative;
+        transition: 0.8s;
+        transform-style: preserve-3d;
+    }
+    
+    .back,
+    .front {
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        background-origin: content-box;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        text-align: center;
+        top: 0;
+        width: 100%;
+    }
+    
+    .back {
+        background-image: url(../../assets/images/back.png);
+        z-index: 2;
+    }
+    
+    .front {
+        transform: rotateY(180deg);
+    }
+}
