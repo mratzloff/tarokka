@@ -1,0 +1,26 @@
+#!/bin/sh
+
+echo "Uploading files to tarokka.com..."
+
+aws s3 sync build s3://tarokka.com/ \
+  --cache-control public,max-age=31536000 \
+  --delete \
+  --exclude "*.DS_Store" \
+  --exclude index.html \
+  --exclude service-worker.js \
+  --exclude static
+
+aws s3 sync build/static s3://tarokka.com/static \
+  --cache-control public,max-age=86400 \
+  --delete \
+  --exclude "*.DS_Store"
+
+aws s3 cp build/service-worker.js s3://tarokka.com/ \
+  --cache-control max-age=0,no-cache,no-store,must-revalidate \
+  --content-type application/javascript \
+  --metadata-directive REPLACE
+
+aws s3 cp build/index.html s3://tarokka.com/ \
+  --cache-control max-age=0,no-cache,no-store,must-revalidate \
+  --content-type text/html \
+  --metadata-directive REPLACE
