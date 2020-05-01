@@ -4,20 +4,20 @@ import React from 'react';
 import Modal from 'react-modal';
 
 /**
- * React props for {@link GuideLink}.
+ * React props for {@link GuideButton}.
  *
- * @interface GuideLinkProps
+ * @interface GuideButtonProps
  */
-interface GuideLinkProps {
+interface GuideButtonProps {
     onClick: () => void,
 };
 
 /**
- * React state for {@link GuideLink}.
+ * React state for {@link GuideButton}.
  *
- * @interface GuideLinkState
+ * @interface GuideButtonState
  */
-interface GuideLinkState {
+interface GuideButtonState {
     modalOpen: boolean,
     warningAcknowledged: boolean,
 }
@@ -25,17 +25,17 @@ interface GuideLinkState {
 /**
  * Called by React to render the link that opens {@link Guide}.
  *
- * @param {GuideLinkProps} props
+ * @param {GuideButtonProps} props
  * @returns {JSX.Element}
  */
-class GuideLink extends React.Component<GuideLinkProps, GuideLinkState> {
+class GuideButton extends React.Component<GuideButtonProps, GuideButtonState> {
     /**
-     * Creates an instance of GuideLink.
+     * Creates an instance of GuideButton.
      * 
-     * @param {GuideLinkProps} props
-     * @memberof GuideLink
+     * @param {GuideButtonProps} props
+     * @memberof GuideButton
      */
-    constructor(props: GuideLinkProps) {
+    constructor(props: GuideButtonProps) {
         super(props);
 
         this.state = {
@@ -89,7 +89,7 @@ class GuideLink extends React.Component<GuideLinkProps, GuideLinkState> {
      * The acknowledgment lasts until the page is reloaded.
      *
      * @private
-     * @memberof GuideLink
+     * @memberof GuideButton
      */
     private acknowledgeWarningAndOpenGuide = (): void => {
         this.setState({
@@ -104,7 +104,7 @@ class GuideLink extends React.Component<GuideLinkProps, GuideLinkState> {
      * Closes the warning modal.
      *
      * @private
-     * @memberof GuideLink
+     * @memberof GuideButton
      */
     private closeModal = (): void => {
         this.setState({modalOpen: false});
@@ -114,7 +114,7 @@ class GuideLink extends React.Component<GuideLinkProps, GuideLinkState> {
      * Handles the Dungeon Master's guide button click.
      *
      * @private
-     * @memberof GuideLink
+     * @memberof GuideButton
      */
     private handleClick = (): void => {
         if (this.state.warningAcknowledged) {
@@ -128,7 +128,7 @@ class GuideLink extends React.Component<GuideLinkProps, GuideLinkState> {
      * Opens the Dungeon Master's guide.
      *
      * @private
-     * @memberof GuideLink
+     * @memberof GuideButton
      */
     private openGuide = (): void => {
         window.open('/guide', 'tarokka');
@@ -138,11 +138,11 @@ class GuideLink extends React.Component<GuideLinkProps, GuideLinkState> {
      * Opens the warning modal.
      *
      * @private
-     * @memberof GuideLink
+     * @memberof GuideButton
      */
     private openModal = (): void => {
         this.setState({modalOpen: true});
     };
 }
 
-export default GuideLink;
+export default GuideButton;
