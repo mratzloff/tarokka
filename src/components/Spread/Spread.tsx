@@ -7,13 +7,32 @@ import GuideButton from '../GuideButton/GuideButton';
 import Card from './Card';
 
 /**
+ * Artwork change message from {@link Guide}.
+ *
+ * @interface ArtworkChangeMessage
+ */
+interface ArtworkChangeMessage {
+    key: string,
+    type: string,
+};
+
+/**
+ * Data request message from {@link Guide}.
+ *
+ * @interface DataRequestMessage
+ */
+interface DataRequestMessage {
+    type: string,
+};
+
+/**
  * React props for {@link Spread}.
  *
  * @interface SpreadProps
  */
 interface SpreadProps {
+    artworkKey: string,
     data: Data,
-    edition: string,
 };
 
 /**
@@ -22,8 +41,16 @@ interface SpreadProps {
  * @interface SpreadState
  */
 interface SpreadState {
+    artworkKey: string,
     draws: Array<HighCard | LowCard>,
 };
+
+/**
+ * Expected broadcast message from {@link Guide}.
+ *
+ * @type Message
+ */
+type Message = ArtworkChangeMessage | DataRequestMessage;
 
 /**
  * The spread, or arrangement of cards, for a given tarokka reading.
@@ -52,6 +79,7 @@ class Spread extends React.Component<SpreadProps, SpreadState> {
         super(props);
 
         this.state = {
+            artworkKey: '',
             draws: [],
         };
     }
@@ -71,56 +99,19 @@ class Spread extends React.Component<SpreadProps, SpreadState> {
      *
      * @memberof Spread
      */
-    public render = (): JSX.Element => {
-        const editionClass = this.props.edition[1] + this.props.edition[0];
-
-        return (
-            <React.Fragment>
-                <GuideButton onClick={this.sendDataWithDelay} />
-                <div id="spread">
-                    <div id="cards" className={editionClass}>
-                        {this.props.data.spread.map(this.getCardElement)}
-                    </div>
+    public render = (): JSX.Element => (
+        <React.Fragment>
+            <GuideButton onClick={this.sendDataWithDelay} />
+            <div id="spread">
+                <div id="cards" className={this.getArtworkKey()}>
+                    {this.props.data.spread.map(this.getCardElement)}
                 </div>
-            </React.Fragment>
-        );
-    };
+            </div>
+        </React.Fragment>
+    );
 
-    /**
-     * Receives requests from {@link Guide} and sends data in response.
-     * 
-     * For example, when {@link Guide} is refreshed and has no data available,
-     * it will ask {@link Spread} to resend.
-     *
-     * @private
-     * @memberof Spread
-     */
-    private handleMessage = (): void => {
-        this.sendData();
-    };
-
-    /**
-     * Broadcasts data to the Guide component.
-     *
-     * @private
-     * @memberof Spread
-     */
-    private sendData = (): void => {
-        this.channel.postMessage({
-            draws: this.state.draws,
-            spread: this.props.data.spread,
-        });
-    };
-
-    /**
-     * Broadcasts data to the Guide component after a brief delay, to allow
-     * it to properly initialize after the user clicks on the GuideLink.
-     *
-     * @private
-     * @memberof Spread
-     */
-    private sendDataWithDelay = (): void => {
-        setTimeout(this.sendData, 100);
+    private changeArtwork = (key: string): void => {
+        this.setState({artworkKey: key});
     };
 
     /**
@@ -190,6 +181,10 @@ class Spread extends React.Component<SpreadProps, SpreadState> {
         return this.drawCard(this.props.data.deck.low.length, indexes);
     };
 
+    private getArtworkKey = (): string => {
+        return this.state.artworkKey || this.props.artworkKey;
+    };
+
     /**
      * Renders a {@link Card} component. Helper for {@link render}.
      *
@@ -200,12 +195,58 @@ class Spread extends React.Component<SpreadProps, SpreadState> {
     private getCardElement = (card: SpreadCard, index: number): JSX.Element => {
         return (
             <Card
-                key={card.key}
+                artworkKey={this.getArtworkKey()}
                 card={card}
                 draw={this.state.draws[index]}
-                edition={this.props.edition}
+                key={card.key}
             />
         );
+    };
+
+    /**
+     * Receives requests from {@link Guide} and sends data in response.
+     * 
+     * For example, when {@link Guide} is refreshed and has no data available,
+     * it will ask {@link Spread} to resend.
+     *
+     * @private
+     * @memberof Spread
+     */
+    private handleMessage = (message: Message): void => {
+        switch (message.type) {
+            case 'data-request':
+                this.sendData();
+                break;
+            case 'artwork-change':
+                const key = (message as ArtworkChangeMessage).key;
+                this.changeArtwork(key);
+                break;
+        }
+    };
+
+    /**
+     * Broadcasts data to the Guide component.
+     *
+     * @private
+     * @memberof Spread
+     */
+    private sendData = (): void => {
+        this.channel.postMessage({
+            draws: this.state.draws,
+            spread: this.props.data.spread,
+            type: 'data',
+        });
+    };
+
+    /**
+     * Broadcasts data to the Guide component after a brief delay, to allow
+     * it to properly initialize after the user clicks on the GuideLink.
+     *
+     * @private
+     * @memberof Spread
+     */
+    private sendDataWithDelay = (): void => {
+        setTimeout(this.sendData, 100);
     };
 }
 

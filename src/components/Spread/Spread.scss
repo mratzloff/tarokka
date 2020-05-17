@@ -1,10 +1,10 @@
-$edition-dimensions: (
-    "e2": (
+$artwork-dimensions: (
+    "forbidden-lore": (
         "height": 527px,
         "scale": 0.45,
         "width": 342px,
     ),
-    "e5": (
+    "gale-force-nine": (
         "height": 840px,
         "scale": 0.28,
         "width": 600px,
@@ -46,12 +46,12 @@ $edition-dimensions: (
         grid-area: e;
     }
     
-    @each $edition, $dimensions in $edition-dimensions {
+    @each $artwork, $dimensions in $artwork-dimensions {
         $height: map-get($dimensions, "height");
         $scale: map-get($dimensions, "scale");
         $width: map-get($dimensions, "width");
     
-        #cards.#{$edition} {
+        #cards.#{$artwork} {
             width: 3 * (($width * $scale) + 40px);
     
             .card,

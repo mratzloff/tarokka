@@ -3,13 +3,17 @@ import './Guide.scss';
 import {BroadcastChannel} from 'broadcast-channel';
 import React from 'react';
 import nl2br from 'react-nl2br';
+import Select, {ValueType} from 'react-select';
 
 /**
  * React props for {@link Guide}.
  *
  * @interface GuideProps
  */
-interface GuideProps {};
+interface GuideProps {
+    artworkKey: string,
+    data: Data,
+};
 
 /**
  * React state for {@link Guide}.
@@ -24,11 +28,17 @@ interface GuideState {
 /**
  * Expected broadcast message from {@link Spread}.
  *
- * @interface MessageEvent
+ * @interface DataMessage
  */
-interface MessageEvent {
+interface DataMessage {
     draws: Array<HighCard | LowCard>,
     spread: SpreadCard[],
+    type: string,
+};
+
+interface OptionType {
+    label: string,
+    value: string,
 };
 
 /**
@@ -81,7 +91,7 @@ class Guide extends React.Component<GuideProps, GuideState> {
         this.channel.onmessage = this.handleMessage;
 
         if (this.state.draws.length === 0 || this.state.spread.length === 0) {
-            this.timeout = setTimeout(this.requestData, 100);
+            this.timeout = setTimeout(this.sendDataRequest, 100);
         }
     };
 
@@ -91,21 +101,28 @@ class Guide extends React.Component<GuideProps, GuideState> {
      * @memberof Guide
      */
     public render = (): JSX.Element => {
+        const options = this.props.data.artwork.map(each => {
+            return {value: each.key, label: each.name};
+        });
+
+        const defaultValue = options.find(each => {
+            return each.value === this.props.artworkKey;
+        });
+
         return (
             <div id="guide">
-                {this.state.spread.map(this.renderCard)}
+                <div>
+                    <Select
+                        defaultValue={defaultValue}
+                        onChange={this.sendArtworkChange}
+                        options={options}
+                    />
+                </div>
+                <div>
+                    {this.state.spread.map(this.renderCard)}
+                </div>
             </div>
         );
-    };
-
-    /**
-     * Requests data from {@link Spread}.
-     *
-     * @private
-     * @memberof Guide
-     */
-    private requestData = (): void => {
-        this.channel.postMessage(true);
     };
 
     /**
@@ -115,14 +132,14 @@ class Guide extends React.Component<GuideProps, GuideState> {
      * @private
      * @memberof Guide
      */
-    private handleMessage = (event: MessageEvent): void => {
+    private handleMessage = (message: DataMessage): void => {
         if (this.timeout) {
             clearTimeout(this.timeout);
         }
 
         this.setState({
-            draws: event.draws,
-            spread: event.spread,
+            draws: message.draws,
+            spread: message.spread,
         });
     };
 
@@ -273,6 +290,31 @@ class Guide extends React.Component<GuideProps, GuideState> {
      */
     private say = (text: string): JSX.Element => {
         return <span><strong>Say:</strong> "{text}"</span>;
+    };
+
+    /**
+     * Sends artwork change event to {@link Spread}.
+     *
+     * @private
+     * @memberof Guide
+     */
+    private sendArtworkChange = (option: ValueType<OptionType>): void => {
+        this.channel.postMessage({
+            key: (option as OptionType).value,
+            type: 'artwork-change',
+        });
+    };
+
+    /**
+     * Send data request event to {@link Spread}.
+     *
+     * @private
+     * @memberof Guide
+     */
+    private sendDataRequest = (): void => {
+        this.channel.postMessage({
+            type: 'data-request',
+        });
     };
 }
 

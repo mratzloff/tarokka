@@ -6,9 +6,9 @@ import React from 'react';
  * @interface CardProps
  */
 interface CardProps {
+    artworkKey: string,
     card: SpreadCard,
     draw: HighCard | LowCard,
-    edition: string,
 };
 
 /**
@@ -46,6 +46,7 @@ class Card extends React.Component<CardProps> {
     public render = (): JSX.Element => {
         if (this.ref.current && this.props.draw) {
             const matches = this.ref.current.getElementsByClassName('front');
+
             if (matches.length > 0) {
                 const front = matches[0] as HTMLDivElement;
                 front.style.backgroundImage = this.getCardImage(this.props.draw.image);
@@ -74,9 +75,7 @@ class Card extends React.Component<CardProps> {
      * @memberof Card
      */
     private getCardImage = (image: string): string => {
-        const edition = this.props.edition;
-        const editionPath = edition.match(/\de/) ? edition : '2e';
-        return `url(images/${editionPath}/${image})`;
+        return `url(images/${this.props.artworkKey}/${image})`;
     };
 
     /**
