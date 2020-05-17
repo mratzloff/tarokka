@@ -111,6 +111,7 @@ class Spread extends React.Component<SpreadProps, SpreadState> {
     );
 
     private changeArtwork = (key: string): void => {
+        localStorage.setItem('artwork', key);
         this.setState({artworkKey: key});
     };
 

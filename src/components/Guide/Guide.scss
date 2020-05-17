@@ -26,6 +26,16 @@
         @include font-body-bold;
     }
 
+    .form-field {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+
+        label {
+            margin-right: 10px;
+        }
+    }
+
     .secret {
         margin-top: 12px;
     }

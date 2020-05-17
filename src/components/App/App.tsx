@@ -48,7 +48,12 @@ class App extends React.Component {
      * @memberof App
      */
     private getArtworkKey = (): string => {
-        const savedKey = defaultArtworkKey;
+        const savedKey = localStorage.getItem('artwork');
+
+        if (!savedKey) {
+            return defaultArtworkKey;
+        }
+
         const index = data.artwork.findIndex(each => {
             return each.key === savedKey;
         });

@@ -3,7 +3,7 @@ import './Guide.scss';
 import {BroadcastChannel} from 'broadcast-channel';
 import React from 'react';
 import nl2br from 'react-nl2br';
-import Select, {ValueType} from 'react-select';
+import Select, {Styles, ValueType} from 'react-select';
 
 /**
  * React props for {@link Guide}.
@@ -109,13 +109,23 @@ class Guide extends React.Component<GuideProps, GuideState> {
             return each.value === this.props.artworkKey;
         });
 
+        const selectStyles = {
+            container: (provided: Partial<Styles>) => ({
+                ...provided,
+                flex: 1,
+            }),
+        } as Styles;
+
         return (
             <div id="guide">
-                <div>
+                <div className="form-field">
+                    <label htmlFor="artwork-changer">Artwork</label>
                     <Select
                         defaultValue={defaultValue}
+                        id="artwork-changer"
                         onChange={this.sendArtworkChange}
                         options={options}
+                        styles={selectStyles}
                     />
                 </div>
                 <div>
