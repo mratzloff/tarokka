@@ -39,6 +39,7 @@ interface HighCard {
     alliesSecretText: readonly string[],
     alliesText: readonly string[],
     image: readonly string,
+    key: readonly string,
     name: readonly string,
     strahdSecretText: readonly string,
     strahdText: readonly string,
@@ -51,6 +52,7 @@ interface HighCard {
  */
 interface LowCard {
     image: readonly string,
+    key: readonly string,
     name: readonly string,
     secretText: readonly string,
     suit: readonly string,

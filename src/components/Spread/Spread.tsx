@@ -110,6 +110,12 @@ class Spread extends React.Component<SpreadProps, SpreadState> {
         </React.Fragment>
     );
 
+    /**
+     * Changes the artwork for the deck.
+     *
+     * @private
+     * @memberof Spread
+     */
     private changeArtwork = (key: string): void => {
         localStorage.setItem('artwork', key);
         this.setState({artworkKey: key});
@@ -142,14 +148,26 @@ class Spread extends React.Component<SpreadProps, SpreadState> {
         const lowIndexes: number[] = [];
 
         for (let card of this.props.data.spread) {
+            const drawKey = localStorage.getItem(card.key);
             let draw: HighCard | LowCard;
+            let index = -1;
+
+            if (drawKey && (card.deck === 'high' || card.deck === 'low')) {
+                index = this.props.data.deck[card.deck].findIndex(
+                    (each: HighCard | LowCard) => each.key === drawKey
+                );
+            }
 
             if (card.deck === 'high') {
-                const index = this.drawHighCard(highIndexes);
+                if (index === -1) {
+                    index = this.drawHighCard(highIndexes);
+                }
                 highIndexes.push(index);
                 draw = this.props.data.deck.high[index];
             } else {
-                const index = this.drawLowCard(lowIndexes);
+                if (index === -1) {
+                    index = this.drawLowCard(lowIndexes);
+                }
                 lowIndexes.push(index);
                 draw = this.props.data.deck.low[index];
             }
@@ -182,6 +200,12 @@ class Spread extends React.Component<SpreadProps, SpreadState> {
         return this.drawCard(this.props.data.deck.low.length, indexes);
     };
 
+    /**
+     * Returns the key for the card artwork.
+     *
+     * @private
+     * @memberof Spread
+     */
     private getArtworkKey = (): string => {
         return this.state.artworkKey || this.props.artworkKey;
     };

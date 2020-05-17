@@ -12,6 +12,9 @@
 
     h2 {
         @include font-heading;
+
+        display: flex;
+        align-items: center;
     }
 
     ol {

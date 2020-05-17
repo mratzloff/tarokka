@@ -19,7 +19,7 @@ interface CardProps {
  */
 class Card extends React.Component<CardProps> {
     /**
-     * DOM reference to the card, used to set the front image.
+     * DOM reference to the card. Used to set the front image.
      *
      * @private
      * @type {React.RefObject<HTMLDivElement>}

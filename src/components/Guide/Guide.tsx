@@ -5,6 +5,8 @@ import React from 'react';
 import nl2br from 'react-nl2br';
 import Select, {Styles, ValueType} from 'react-select';
 
+import LockButton from './LockButton';
+
 /**
  * React props for {@link Guide}.
  *
@@ -235,7 +237,10 @@ class Guide extends React.Component<GuideProps, GuideState> {
 
         return (
             <div key={card.name}>
-                <h2>{article}{card.name}</h2>
+                <h2>
+                    {article}{card.name}
+                    <LockButton card={card} draw={this.state.draws[index]} />
+                </h2>
                 {description}
             </div>
         );
