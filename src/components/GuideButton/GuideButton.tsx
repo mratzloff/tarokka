@@ -23,7 +23,7 @@ interface GuideButtonState {
 }
 
 /**
- * Called by React to render the link that opens {@link Guide}.
+ * The button that opens {@link Guide}.
  *
  * @param {GuideButtonProps} props
  * @returns {JSX.Element}
@@ -47,7 +47,7 @@ class GuideButton extends React.Component<GuideButtonProps, GuideButtonState> {
     /**
      * Called by React to render the component.
      *
-     * @returns {JSX.Element}
+     * @memberof GuideButton
      */
     public render = (): JSX.Element => {
         return (

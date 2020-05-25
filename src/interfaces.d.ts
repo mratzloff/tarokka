@@ -30,6 +30,16 @@ interface Deck {
 };
 
 /**
+ * Generic dictionary type.
+ *
+ * @interface Dictionary
+ * @template T
+ */
+interface Dictionary<T> {
+    [key: string]: T;
+}
+
+/**
  * The tarokka high deck, meaning the trump cards without a number or suit.
  *
  * @interface HighCard
@@ -39,7 +49,7 @@ interface HighCard {
     alliesSecretText: readonly string[],
     alliesText: readonly string[],
     image: readonly string,
-    key: readonly string,
+    key: readonly string, // Must be unique for entire deck
     name: readonly string,
     strahdSecretText: readonly string,
     strahdText: readonly string,
@@ -52,12 +62,33 @@ interface HighCard {
  */
 interface LowCard {
     image: readonly string,
-    key: readonly string,
+    key: readonly string, // Must be unique for entire deck
+    location: readonly string,
     name: readonly string,
     secretText: readonly string,
     suit: readonly string,
     text: readonly string,
     value: readonly number,
+};
+
+/**
+ * An option group for Select.
+ *
+ * @interface OptionGroup
+ */
+interface OptionGroup {
+    label: string,
+    options: Option[],
+};
+
+/**
+ * An option for Select. Its own OptionType is unexported.
+ *
+ * @interface Option
+ */
+interface Option {
+    label: string,
+    value: string,
 };
 
 /**

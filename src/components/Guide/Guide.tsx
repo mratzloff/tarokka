@@ -3,8 +3,10 @@ import './Guide.scss';
 import {BroadcastChannel} from 'broadcast-channel';
 import React from 'react';
 import nl2br from 'react-nl2br';
-import Select, {Styles, ValueType} from 'react-select';
+import {ValueType} from 'react-select';
 
+import ArtworkChanger from './ArtworkChanger';
+import CardRemover from './CardRemover';
 import LockButton from './LockButton';
 
 /**
@@ -36,11 +38,6 @@ interface DataMessage {
     draws: Array<HighCard | LowCard>,
     spread: SpreadCard[],
     type: string,
-};
-
-interface OptionType {
-    label: string,
-    value: string,
 };
 
 /**
@@ -103,34 +100,22 @@ class Guide extends React.Component<GuideProps, GuideState> {
      * @memberof Guide
      */
     public render = (): JSX.Element => {
-        const options = this.props.data.artwork.map(each => {
-            return {value: each.key, label: each.name};
-        });
-
-        const defaultValue = options.find(each => {
-            return each.value === this.props.artworkKey;
-        });
-
-        const selectStyles = {
-            container: (provided: Partial<Styles>) => ({
-                ...provided,
-                flex: 1,
-            }),
-        } as Styles;
-
         return (
             <div id="guide">
-                <div className="form-field">
-                    <label htmlFor="artwork-changer">Artwork</label>
-                    <Select
-                        defaultValue={defaultValue}
-                        id="artwork-changer"
+                <div id="form">
+                    <ArtworkChanger
+                        artwork={this.props.data.artwork}
+                        artworkKey={this.props.artworkKey}
+                        className="form-field"
                         onChange={this.sendArtworkChange}
-                        options={options}
-                        styles={selectStyles}
+                    />
+                    <CardRemover
+                        className="form-field"
+                        deck={this.props.data.deck}
+                        onChange={this.sendRemovedCards}
                     />
                 </div>
-                <div>
+                <div id="script">
                     {this.state.spread.map(this.renderCard)}
                 </div>
             </div>
@@ -308,28 +293,34 @@ class Guide extends React.Component<GuideProps, GuideState> {
     };
 
     /**
-     * Sends artwork change event to {@link Spread}.
+     * Sends artwork change message to {@link Spread}.
      *
      * @private
      * @memberof Guide
      */
-    private sendArtworkChange = (option: ValueType<OptionType>): void => {
-        this.channel.postMessage({
-            key: (option as OptionType).value,
-            type: 'artwork-change',
-        });
+    private sendArtworkChange = (option: ValueType<Option>): void => {
+        const key = (option as Option).value;
+        this.channel.postMessage({key, type: 'change-artwork'});
     };
 
     /**
-     * Send data request event to {@link Spread}.
+     * Send data request message to {@link Spread}.
      *
      * @private
      * @memberof Guide
      */
     private sendDataRequest = (): void => {
-        this.channel.postMessage({
-            type: 'data-request',
-        });
+        this.channel.postMessage({type: 'send-data'});
+    };
+
+    /**
+     * Sends remove card message to {@link Spread}.
+     *
+     * @private
+     * @memberof Guide
+     */
+    private sendRemovedCards = (keys: string[]): void => {
+        this.channel.postMessage({keys, type: 'remove-cards'});
     };
 }
 

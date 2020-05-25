@@ -4,7 +4,6 @@
     @include font-body;
 
     background-color: #FAF7EF;
-    padding: 15px 45px 30px;
 
     em {
         @include font-body-bold-italic;
@@ -33,13 +32,26 @@
         align-items: center;
         display: flex;
         flex-wrap: wrap;
+        margin-bottom: 10px;
 
         label {
+            color: #58170D;
             margin-right: 10px;
+            width: 105px;
         }
     }
 
     .secret {
         margin-top: 12px;
+    }
+
+    #form {
+        background-color: #EEECE1;
+        border-bottom: 1px solid #E0E1D2;
+        padding: 15px 45px 5px;
+    }
+
+    #script {
+        padding: 10px 45px 30px;
     }
 }

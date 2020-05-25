@@ -1,6 +1,6 @@
 button.lock {
-    background-color: #EBE1CD;
-    border: none;
+    background-color: #EEECE1;
+    border: 1px solid #E0E1D2;
     border-radius: 3px;
     color: #58170D;
     display: inline-block;
@@ -15,6 +15,7 @@ button.lock {
 
     &.locked {
         background-color: #58170D;
-        color: #EBE1CD;
+        border: none;
+        color: #EEECE1;
     }
 }

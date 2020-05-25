@@ -261,6 +261,7 @@
             {
                 "image": "low/0.png",
                 "key": "swashbuckler",
+                "location": "Castle Ravenloft",
                 "name": "Swashbuckler",
                 "secretText": "The treasure lies in the crypt of Endorovich (chapter4, area K84, crypt 7).",
                 "suit": "Coins",
@@ -270,6 +271,7 @@
             {
                 "image": "low/1.png",
                 "key": "philanthropist",
+                "location": "Village of Kresk",
                 "name": "Philanthropist",
                 "secretText": "The treasure is in the nursery of the Abbey of Saint Markovia (chapter8, area S23).",
                 "suit": "Coins",
@@ -279,6 +281,7 @@
             {
                 "image": "low/2.png",
                 "key": "trader",
+                "location": "The Wizard of Wines",
                 "name": "Trader",
                 "secretText": "The treasure lies in the glassblower's workshop in the Wizard of Wines (chapter 12, area W10).",
                 "suit": "Coins",
@@ -288,6 +291,7 @@
             {
                 "image": "low/3.png",
                 "key": "merchant",
+                "location": "Castle Ravenloft",
                 "name": "Merchant",
                 "secretText": "The treasure lies in Castle Ravenloft's wine cellar (chapter 4, area K63).",
                 "suit": "Coins",
@@ -297,6 +301,7 @@
             {
                 "image": "low/4.png",
                 "key": "guild-member",
+                "location": "Castle Ravenloft",
                 "name": "Guild Member",
                 "secretText": "The treasure lies in the crypt of Artank Swilovich (chapter 4, area K84, crypt 5).",
                 "suit": "Coins",
@@ -306,6 +311,7 @@
             {
                 "image": "low/5.png",
                 "key": "beggar",
+                "location": "Town of Vallaki",
                 "name": "Beggar",
                 "secretText": "The treasure is hidden in Kasimir's hovel (chapter 5, area N9a).",
                 "suit": "Coins",
@@ -315,6 +321,7 @@
             {
                 "image": "low/6.png",
                 "key": "thief",
+                "location": "River Ivlis Crossroads",
                 "name": "Thief",
                 "secretText": "The treasure is buried in the graveyard at the River Ivlis crossroads (chapter 2, area F).",
                 "suit": "Coins",
@@ -324,6 +331,7 @@
             {
                 "image": "low/7.png",
                 "key": "tax-collector",
+                "location": "Town of Vallaki",
                 "name": "Tax Collector",
                 "secretText": "The treasure is hidden in the Vistani treasure wagon (chapter 5, area N9i). \"A missing child\" refers to Arabelle (see chapter 2, area L).",
                 "suit": "Coins",
@@ -333,6 +341,7 @@
             {
                 "image": "low/8.png",
                 "key": "miser",
+                "location": "Castle Ravenloft",
                 "name": "Miser",
                 "secretText": "The treasure lies in Castle Ravenloft's treasury (chapter 4, area K41).",
                 "suit": "Coins",
@@ -342,6 +351,7 @@
             {
                 "image": "low/9.png",
                 "key": "rogue",
+                "location": "Town of Vallaki",
                 "name": "Rogue",
                 "secretText": "The treasure is hidden in the attic of the Blue Water Inn (chapter 5, area N2q).",
                 "suit": "Coins",
@@ -351,6 +361,7 @@
             {
                 "image": "low/10.png",
                 "key": "monk",
+                "location": "Village of Kresk",
                 "name": "Monk",
                 "secretText": "The treasure lies in the main hall of the Abbey of Saint Markovia (chapter 8, area S13).",
                 "suit": "Glyphs",
@@ -360,6 +371,7 @@
             {
                 "image": "low/11.png",
                 "key": "missionary",
+                "location": "Village of Kresk",
                 "name": "Missionary",
                 "secretText": "The treasure is hidden inside on the scarecrows in the garden of the Abbey of Saint Markovia (chapter 8, area S9).",
                 "suit": "Glyphs",
@@ -369,6 +381,7 @@
             {
                 "image": "low/12.png",
                 "key": "healer",
+                "location": "Village of Kresk",
                 "name": "Healer",
                 "secretText": "The treasure lies beneath the gazebo in the Shrine of the White Sun (chapter 8, area S4).",
                 "suit": "Glyphs",
@@ -378,6 +391,7 @@
             {
                 "image": "low/13.png",
                 "key": "shepherd",
+                "location": "Castle Ravenloft",
                 "name": "Shepherd",
                 "secretText": "The treasure lies in the tomb of King Barov and Queen Ravenovia (chapter 4, area K88).",
                 "suit": "Glyphs",
@@ -387,6 +401,7 @@
             {
                 "image": "low/14.png",
                 "key": "druid",
+                "location": "Yester Hill",
                 "name": "Druid",
                 "secretText": "The treasure lies at the base of the Gulthias tree (chapter 14, area Y4). Any wereraven encountered in the wilderness can lead the characters to the location.",
                 "suit": "Glyphs",
@@ -396,6 +411,7 @@
             {
                 "image": "low/15.png",
                 "key": "anarchist",
+                "location": "Castle Ravenloft",
                 "name": "Anarchist",
                 "secretText": "The treasure lies in Castle Ravenloft's hall of bones (chapter 4, area K67).",
                 "suit": "Glyphs",
@@ -405,6 +421,7 @@
             {
                 "image": "low/16.png",
                 "key": "charlatan",
+                "location": "Old Bonegrinder",
                 "name": "Charlatan",
                 "secretText": "The treasure lies in the attic of Old Bonegrinder (chapter 6, areas O4).",
                 "suit": "Glyphs",
@@ -414,6 +431,7 @@
             {
                 "image": "low/17.png",
                 "key": "bishop",
+                "location": "Amber Temple",
                 "name": "Bishop",
                 "secretText": "The treasure lies in the sealed treasury of the Amber Temple (chapter 13, area X40).",
                 "suit": "Glyphs",
@@ -423,6 +441,7 @@
             {
                 "image": "low/18.png",
                 "key": "traitor",
+                "location": "Town of Vallaki",
                 "name": "Traitor",
                 "secretText": "The treasure is hidden in the master bedroom of the Wachterhaus (chapter 5, area N4o).",
                 "suit": "Glyphs",
@@ -432,6 +451,7 @@
             {
                 "image": "low/19.png",
                 "key": "priest",
+                "location": "Castle Ravenloft",
                 "name": "Priest",
                 "secretText": "The treasure lies in Castle Ravenloft's chapel (chapter 4, area K15).",
                 "suit": "Glyphs",
@@ -441,6 +461,7 @@
             {
                 "image": "low/20.png",
                 "key": "transmuter",
+                "location": "Castle Ravenloft",
                 "name": "Transmuter",
                 "secretText": "The treasure lies in Castle Ravenloft's north tower peak (chapter 4, area K60).",
                 "suit": "Stars",
@@ -450,6 +471,7 @@
             {
                 "image": "low/21.png",
                 "key": "diviner",
+                "location": "Tser Pool Encampment",
                 "name": "Diviner",
                 "secretText": "The treasure lies in Madam Eva's encampment (chapter 2, area G). If she is the one performing the card reading, she says, \"I think the treasure is under my very nose!\"",
                 "suit": "Stars",
@@ -459,6 +481,7 @@
             {
                 "image": "low/22.png",
                 "key": "enchanter",
+                "location": "Ruins of Berez",
                 "name": "Enchanter",
                 "secretText": "The treasure lies under Marina's monument in Berez (chapter 10, area U5). \"The master of the marsh\" refers to Burgomaster Lazlo Ulrich (area U2), whose ghost can point the characters toward the monument.",
                 "suit": "Stars",
@@ -468,6 +491,7 @@
             {
                 "image": "low/23.png",
                 "key": "abjurer",
+                "location": "Argynvostholt",
                 "name": "Abjurer",
                 "secretText": "The treasure lies in the beacon of Argynvostholt (chapter 7, area Q53). \"Great stone dragon\" refers to the statue in area Q1.",
                 "suit": "Stars",
@@ -477,6 +501,7 @@
             {
                 "image": "low/24.png",
                 "key": "elementalist",
+                "location": "Amber Temple",
                 "name": "Elementalist",
                 "secretText": "The treasure is inside a model of Castle Ravenloft in the Amber Temple (chapter 13, area X20).",
                 "suit": "Stars",
@@ -486,6 +511,7 @@
             {
                 "image": "low/25.png",
                 "key": "evoker",
+                "location": "Castle Ravenloft",
                 "name": "Evoker",
                 "secretText": "The treasure is hidden in the crypt of Gralmore Nimblenobs (chapter 4, area K84, crypt 37).",
                 "suit": "Stars",
@@ -495,6 +521,7 @@
             {
                 "image": "low/26.png",
                 "key": "illusionist",
+                "location": "Town of Vallaki",
                 "name": "Illusionist",
                 "secretText": "The treasure lies in Rictavio's carnival wagon (chapter 5, area N5).",
                 "suit": "Stars",
@@ -504,6 +531,7 @@
             {
                 "image": "low/27.png",
                 "key": "necromancer",
+                "location": "Castle Ravenloft",
                 "name": "Necromancer",
                 "secretText": "The treasure lies in Castle Ravenloft's study (chapter 4, area K37).",
                 "suit": "Stars",
@@ -513,6 +541,7 @@
             {
                 "image": "low/28.png",
                 "key": "conjurer",
+                "location": "Ruins of Berez",
                 "name": "Conjurer",
                 "secretText": "The treasure is in Baba Lysaga's hut (chapter 10, area U3).",
                 "suit": "Stars",
@@ -522,6 +551,7 @@
             {
                 "image": "low/29.png",
                 "key": "wizard",
+                "location": "Town of Vallaki",
                 "name": "Wizard",
                 "secretText": "The treasure lies on the top floor of Van Richten's Tower (chapter 11, area V7).",
                 "suit": "Stars",
@@ -531,6 +561,7 @@
             {
                 "image": "low/30.png",
                 "key": "avenger",
+                "location": "Argynvostholt",
                 "name": "Avenger",
                 "secretText": "The treasure is in the possession of Vladimir Horngaard in Argynvostholt (chapter 7, area Q36).",
                 "suit": "Swords",
@@ -540,6 +571,7 @@
             {
                 "image": "low/31.png",
                 "key": "paladin",
+                "location": "Castle Ravenloft",
                 "name": "Paladin",
                 "secretText": "The treasure lies in Sergei's tomb (chapter 4, area K85).",
                 "suit": "Swords",
@@ -549,6 +581,7 @@
             {
                 "image": "low/32.png",
                 "key": "soldier",
+                "location": "Tsolenka Pass",
                 "name": "Soldier",
                 "secretText": "The treasure lies on the rooftop of the Tsolenka Pass guard tower (chapter 9, area T6).",
                 "suit": "Swords",
@@ -558,6 +591,7 @@
             {
                 "image": "low/33.png",
                 "key": "mercenary",
+                "location": "Castle Ravenloft",
                 "name": "Mercenary",
                 "secretText": "The treasure lies in a crypt in Castle Ravenloft (chapter 4, area K84, crypt 31).",
                 "suit": "Swords",
@@ -567,6 +601,7 @@
             {
                 "image": "low/34.png",
                 "key": "myrmidon",
+                "location": "Werewolf Den",
                 "name": "Myrmidon",
                 "secretText": "The treasure lies in the shrine of the Mother Night in the werewolf den (chapter 15, area Z7).",
                 "suit": "Swords",
@@ -576,6 +611,7 @@
             {
                 "image": "low/35.png",
                 "key": "berserker",
+                "location": "Castle Ravenloft",
                 "name": "Berserker",
                 "secretText": "The treasure lies in the crypt of General Kroval \"Mad Dog\" Grislek (chapter 4, area K84, crypt 38).",
                 "suit": "Swords",
@@ -585,6 +621,7 @@
             {
                 "image": "low/36.png",
                 "key": "hooded-one",
+                "location": "Amber Temple",
                 "name": "Hooded One",
                 "secretText": "The treasure inside the head of a giant statue in the Amber Temple (chapter 13, area X5a).",
                 "suit": "Swords",
@@ -594,6 +631,7 @@
             {
                 "image": "low/37.png",
                 "key": "dictator",
+                "location": "Castle Ravenloft",
                 "name": "Dictator",
                 "secretText": "The treasure lies in Castle Ravenloft's audience hall (chapter 4, area K25).",
                 "suit": "Swords",
@@ -603,6 +641,7 @@
             {
                 "image": "low/38.png",
                 "key": "torturer",
+                "location": "Town of Vallaki",
                 "name": "Torturer",
                 "secretText": "The treasure is in the attic of the burgomaster's mansion in Vallaki (chapter 5, area N3s).",
                 "suit": "Swords",
@@ -612,6 +651,7 @@
             {
                 "image": "low/39.png",
                 "key": "warrior",
+                "location": "Castle Ravenloft",
                 "name": "Warrior",
                 "secretText": "The treasure lies in Strahd's tomb (chapter 4, area K86).",
                 "suit": "Swords",

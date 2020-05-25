@@ -22,7 +22,7 @@ class App extends React.Component {
     /**
      * Called by React to render the component.
      *
-     * @returns {JSX.Element}
+     * @memberof App
      */
     public render = (): JSX.Element => {
         const artworkKey = this.getArtworkKey();
@@ -31,10 +31,16 @@ class App extends React.Component {
             <BrowserRouter>
                 <Switch>
                     <Route path="/guide">
-                        <Guide artworkKey={artworkKey} data={data} />
+                        <Guide
+                            artworkKey={artworkKey}
+                            data={data}
+                        />
                     </Route>
                     <Route path="/">
-                        <Spread artworkKey={artworkKey} data={data} />
+                        <Spread
+                            artworkKey={artworkKey}
+                            data={data}
+                        />
                     </Route>
                 </Switch>
             </BrowserRouter>
@@ -42,23 +48,23 @@ class App extends React.Component {
     };
 
     /**
-     * Returns a valid saved artwork key or the default.
+     * Returns a valid saved artwork key from local storage, or the default
+     * if none exists.
      *
      * @private
      * @memberof App
      */
     private getArtworkKey = (): string => {
-        const savedKey = localStorage.getItem('artwork');
-
-        if (!savedKey) {
+        const storedValue = localStorage.getItem('artwork');
+        if (!storedValue) {
             return defaultArtworkKey;
         }
 
         const index = data.artwork.findIndex(each => {
-            return each.key === savedKey;
+            return each.key === storedValue;
         });
 
-        return (index !== -1) ? savedKey : defaultArtworkKey;
+        return (index !== -1) ? storedValue : defaultArtworkKey;
     };
 }
 
