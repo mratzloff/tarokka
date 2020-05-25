@@ -4,6 +4,7 @@ import {BroadcastChannel} from 'broadcast-channel';
 import React from 'react';
 
 import GuideButton from '../GuideButton/GuideButton';
+import Modal from '../Modal/Modal';
 import Card from './Card';
 
 /**
@@ -55,6 +56,9 @@ interface SpreadState {
     artworkKey: string,
     deck: Deck,
     draws: Array<HighCard | LowCard>,
+    error: string,
+    minHighCards: number,
+    minLowCards: number,
 };
 
 /**
@@ -71,6 +75,11 @@ type Message = ChangeArtworkMessage | SendDataMessage;
  * @extends {React.Component<SpreadProps, SpreadState>}
  */
 class Spread extends React.Component<SpreadProps, SpreadState> {
+    readonly deckTooSmallError =
+        `The deck is too small, and there aren't enough cards for a reading. ` +
+        `Please re-add some high or low cards that were previously removed in ` +
+        `the Dungeon Master's view.`;
+
     /**
      * Broadcast channel used to communicate with {@link Guide}.
      *
@@ -94,6 +103,9 @@ class Spread extends React.Component<SpreadProps, SpreadState> {
             artworkKey: '',
             deck: {high: [], low: []},
             draws: [],
+            error: '',
+            minHighCards: 0,
+            minLowCards: 0,
         };
     }
 
@@ -104,7 +116,16 @@ class Spread extends React.Component<SpreadProps, SpreadState> {
      */
     public componentDidMount = (): void => {
         this.channel.onmessage = this.handleMessage;
-        this.setState({deck: this.getDeck()}, this.drawCards);
+
+        const spread = this.props.data.spread;
+        this.setState(
+            {
+                deck: this.getDeck(),
+                minHighCards: spread.filter(each => each.deck === 'high').length,
+                minLowCards: spread.filter(each => each.deck === 'low').length,
+            },
+            this.drawCards,
+        );
     };
 
     /**
@@ -114,6 +135,11 @@ class Spread extends React.Component<SpreadProps, SpreadState> {
      */
     public render = (): JSX.Element => (
         <React.Fragment>
+            <Modal heading="Warning" isOpen={!!this.state.error}>
+                <p>{this.state.error}</p>
+                <p>This message will close automatically.</p>
+            </Modal>
+
             <GuideButton onClick={this.sendDataWithDelay} />
 
             <div id="spread">
@@ -143,9 +169,12 @@ class Spread extends React.Component<SpreadProps, SpreadState> {
      */
     private drawCard = (deckSize: number, draws: number[]): number => {
         let card = -1;
-        do {
-            card = Math.floor(Math.random() * deckSize);
-        } while (draws.includes(card));
+
+        if (deckSize > 0) {
+            do {
+                card = Math.floor(Math.random() * deckSize);
+            } while (draws.includes(card));
+        }
 
         return card;
     };
@@ -157,9 +186,11 @@ class Spread extends React.Component<SpreadProps, SpreadState> {
      * @memberof Spread
      */
     private drawCards = (): void => {
-        const draws: Array<HighCard | LowCard> = [];
         const highIndexes: number[] = [];
         const lowIndexes: number[] = [];
+
+        let draws: Array<HighCard | LowCard> = [];
+        let error = '';
 
         for (let card of this.props.data.spread) {
             const drawKey = localStorage.getItem(card.key);
@@ -176,11 +207,21 @@ class Spread extends React.Component<SpreadProps, SpreadState> {
                 if (index === -1) {
                     index = this.drawHighCard(highIndexes);
                 }
+                if (index === -1) {
+                    draws = [];
+                    error = this.deckTooSmallError;
+                    break;
+                }
                 highIndexes.push(index);
                 draw = this.state.deck.high[index];
             } else {
                 if (index === -1) {
                     index = this.drawLowCard(lowIndexes);
+                }
+                if (index === -1) {
+                    draws = [];
+                    error = this.deckTooSmallError;
+                    break;
                 }
                 lowIndexes.push(index);
                 draw = this.state.deck.low[index];
@@ -189,7 +230,7 @@ class Spread extends React.Component<SpreadProps, SpreadState> {
             draws.push(draw);
         }
 
-        this.setState({draws}, this.sendData);
+        this.setState({draws, error}, this.sendData);
     };
 
     /**
@@ -200,7 +241,13 @@ class Spread extends React.Component<SpreadProps, SpreadState> {
      * @see drawCards
      */
     private drawHighCard = (indexes: number[]): number => {
-        return this.drawCard(this.state.deck.high.length, indexes);
+        const numHighCards = this.state.deck.high.length;
+
+        if (numHighCards < this.state.minHighCards) {
+            return -1;
+        }
+
+        return this.drawCard(numHighCards, indexes);
     };
 
     /**
@@ -211,7 +258,13 @@ class Spread extends React.Component<SpreadProps, SpreadState> {
      * @see drawCards
      */
     private drawLowCard = (indexes: number[]): number => {
-        return this.drawCard(this.state.deck.low.length, indexes);
+        const numLowCards = this.state.deck.low.length;
+
+        if (numLowCards < this.state.minLowCards) {
+            return -1;
+        }
+
+        return this.drawCard(numLowCards, indexes);
     };
 
     /**
@@ -317,6 +370,7 @@ class Spread extends React.Component<SpreadProps, SpreadState> {
     private sendData = (): void => {
         this.channel.postMessage({
             draws: this.state.draws,
+            error: this.state.error,
             spread: this.props.data.spread,
             type: 'update-data',
         });

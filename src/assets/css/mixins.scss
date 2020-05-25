@@ -1,0 +1,12 @@
+@mixin button {
+    border: none;
+    display: inline-block;
+    cursor: pointer;
+    padding: 6px 10px;
+    text-decoration: none;
+
+    &:active {
+        position: relative;
+        top: 1px;
+    }
+}

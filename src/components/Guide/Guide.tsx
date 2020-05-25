@@ -5,6 +5,7 @@ import React from 'react';
 import nl2br from 'react-nl2br';
 import {ValueType} from 'react-select';
 
+import Modal from '../Modal/Modal';
 import ArtworkChanger from './ArtworkChanger';
 import CardRemover from './CardRemover';
 import LockButton from './LockButton';
@@ -26,6 +27,8 @@ interface GuideProps {
  */
 interface GuideState {
     draws: Array<HighCard | LowCard>,
+    error: string,
+    modalOpen: boolean,
     spread: SpreadCard[],
 };
 
@@ -36,6 +39,7 @@ interface GuideState {
  */
 interface DataMessage {
     draws: Array<HighCard | LowCard>,
+    error: string,
     spread: SpreadCard[],
     type: string,
 };
@@ -77,6 +81,8 @@ class Guide extends React.Component<GuideProps, GuideState> {
 
         this.state = {
             draws: [],
+            error: '',
+            modalOpen: false,
             spread: [],
         };
     }
@@ -101,25 +107,49 @@ class Guide extends React.Component<GuideProps, GuideState> {
      */
     public render = (): JSX.Element => {
         return (
-            <div id="guide">
-                <div id="form">
-                    <ArtworkChanger
-                        artwork={this.props.data.artwork}
-                        artworkKey={this.props.artworkKey}
-                        className="form-field"
-                        onChange={this.sendArtworkChange}
-                    />
-                    <CardRemover
-                        className="form-field"
-                        deck={this.props.data.deck}
-                        onChange={this.sendRemovedCards}
-                    />
+            <React.Fragment>
+                <Modal
+                    cancelButtonLabel="OK"
+                    heading="Warning"
+                    isOpen={this.state.modalOpen}
+                    onRequestClose={this.closeModal}
+                    showCancelButton={true}
+                >
+                    <p>{this.state.error}</p>
+                </Modal>
+
+                <div id="guide">
+                    <div id="form">
+                        <ArtworkChanger
+                            artwork={this.props.data.artwork}
+                            artworkKey={this.props.artworkKey}
+                            className="form-field"
+                            onChange={this.sendArtworkChange}
+                        />
+                        <CardRemover
+                            className="form-field"
+                            deck={this.props.data.deck}
+                            onChange={this.sendRemovedCards}
+                        />
+                    </div>
+                    {!this.state.error &&
+                        <div id="script">
+                            {this.state.spread.map(this.renderCard)}
+                        </div>
+                    }
                 </div>
-                <div id="script">
-                    {this.state.spread.map(this.renderCard)}
-                </div>
-            </div>
+            </React.Fragment>
         );
+    };
+
+    /**
+     * Closes the warning modal.
+     *
+     * @private
+     * @memberof Guide
+     */
+    private closeModal = (): void => {
+        this.setState({modalOpen: false});
     };
 
     /**
@@ -136,6 +166,8 @@ class Guide extends React.Component<GuideProps, GuideState> {
 
         this.setState({
             draws: message.draws,
+            error: message.error,
+            modalOpen: !!message.error,
             spread: message.spread,
         });
     };

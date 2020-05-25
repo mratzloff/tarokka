@@ -1,17 +1,5 @@
 @import '../../assets/css/fonts';
-
-@mixin button {
-    border: none;
-    display: inline-block;
-    cursor: pointer;
-    padding: 6px 10px;
-    text-decoration: none;
-
-    &:active {
-        position: relative;
-        top: 1px;
-    }
-}
+@import '../../assets/css/mixins';
 
 #guide-link {
     position: absolute;
@@ -30,72 +18,5 @@
             background-color: #111;
             color: #444;
         }
-    }
-}
-
-.warning-modal-overlay {
-    background-color: rgba(0, 0, 0, 0.75);
-    bottom: 0px;
-    left: 0px;
-    position: fixed;
-    right: 0px;
-    top: 0px;
-}
-
-.warning-modal {
-    @include font-body;
-
-    background-color: #FAF7EF;
-    color: #111;
-    height: 225px;
-    margin: 0 auto;
-    outline-offset: -14px;
-    outline: 2px solid #D0B47B;
-    overflow: none;
-    padding: 50px;
-    transform: translate(0, 50vh) translate(0, -65%);
-    width: 400px;
-
-    button {
-        @include button;
-        @include font-body-bold;
-
-        background-color: transparent;
-        font-size: 16px;
-        margin: 0 10px;
-    
-        &:hover {
-            border-bottom: 2px solid #111;
-        }
-    }
-
-    .warning-buttons {
-        margin-top: 20px;
-        text-align: center;
-    }
-
-    .warning-body p:first-child {
-        margin-top: 0;
-    }
-
-    .warning-content {
-        i {
-            @include font-body-italic;
-        }
-
-        em {
-            @include font-body-bold-italic;
-        }
-    }
-
-    .warning-heading {
-        background-image: url(../../assets/images/blood.png);
-        background-position: 150px 0;
-        background-repeat: no-repeat;
-        color: #D31818;
-        font-family: HerrVonMuellerhoff;
-        font-size: 60px;
-        line-height: 80px;
-        margin-bottom: 10px;
     }
 }

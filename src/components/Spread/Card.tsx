@@ -19,38 +19,15 @@ interface CardProps {
  */
 class Card extends React.Component<CardProps> {
     /**
-     * DOM reference to the card. Used to set the front image.
-     *
-     * @private
-     * @type {React.RefObject<HTMLDivElement>}
-     * @memberof Card
-     */
-    private ref: React.RefObject<HTMLDivElement>;
-
-    /**
-     * Creates an instance of Card.
-     * 
-     * @param {CardProps} props
-     * @memberof Card
-     */
-    constructor(props: CardProps) {
-        super(props);
-        this.ref = React.createRef();
-    }
-
-    /**
      * Called by React to render the component.
      *
      * @memberof Card
      */
     public render = (): JSX.Element => {
-        if (this.ref.current && this.props.draw) {
-            const matches = this.ref.current.getElementsByClassName('front');
+        let backgroundImage = '';
 
-            if (matches.length > 0) {
-                const front = matches[0] as HTMLDivElement;
-                front.style.backgroundImage = this.getCardImage(this.props.draw.image);
-            }
+        if (this.props.draw) {
+            backgroundImage = this.getCardImage(this.props.draw.image);
         }
 
         return (
@@ -58,11 +35,10 @@ class Card extends React.Component<CardProps> {
                 className="card-container"
                 id={this.props.card.key}
                 onClick={this.handleClick}
-                ref={this.ref}
             >
                 <div className="card">
                     <div className="back"></div>
-                    <div className="front"></div>
+                    <div className="front" style={{backgroundImage}}></div>
                 </div>
             </div>
         );

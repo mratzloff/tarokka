@@ -1,7 +1,8 @@
 import './GuideButton.scss';
 
 import React from 'react';
-import Modal from 'react-modal';
+
+import Modal from '../Modal/Modal';
 
 /**
  * React props for {@link GuideButton}.
@@ -56,29 +57,19 @@ class GuideButton extends React.Component<GuideButtonProps, GuideButtonState> {
                     <button onClick={this.handleClick}>•••</button>
                 </div>
                 <Modal
-                    className="warning-modal"
-                    contentLabel="Warning"
+                    heading="Warning"
                     isOpen={this.state.modalOpen}
+                    onOkButtonClick={this.acknowledgeWarningAndOpenGuide}
                     onRequestClose={this.closeModal}
-                    overlayClassName="warning-modal-overlay"
+                    showCancelButton={true}
+                    showOkButton={true}
                 >
-                    <div className="warning-content">
-                        <div className="warning-heading">Warning</div>
-                        <div className="warning-body">
-                            <p>This button opens the Dungeon Master's guide to
-                            the tarokka reading, which contains <em>massive
-                            spoilers</em> for players of <i>Curse of
-                            Strahd</i>. Be careful not to ruin the game for
-                            yourself or others!</p>
+                    <p>This button opens the Dungeon Master's guide to the tarokka
+                    reading, which contains <em>massive spoilers</em> for players
+                    of <i>Curse of Strahd</i>. Be careful not to ruin the game for
+                    yourself or others!</p>
 
-                            <p>Are you a Dungeon Master running <i>Curse of
-                            Strahd</i>?</p>
-                        </div>
-                    </div>
-                    <div className="warning-buttons">
-                        <button onClick={this.acknowledgeWarningAndOpenGuide}>Yes</button>
-                        <button onClick={this.closeModal}>No</button>
-                    </div>
+                    <p>Are you a Dungeon Master running <i>Curse of Strahd</i>?</p>
                 </Modal>
             </React.Fragment>
         );
