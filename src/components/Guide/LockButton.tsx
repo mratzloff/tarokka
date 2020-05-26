@@ -9,46 +9,11 @@ import React from 'react';
  */
 interface LockButtonProps {
     card: SpreadCard,
-    draw: HighCard | LowCard,
+    locked?: boolean,
+    onClick?: (card: SpreadCard, locked: boolean) => void,
 };
 
-/**
- * React state for {@link LockButton}.
- *
- * @interface LockButtonState
- */
-interface LockButtonState {
-    locked: boolean,
-};
-
-class LockButton extends React.Component<LockButtonProps, LockButtonState> {
-    /**
-     * Creates an instance of LockButton.
-     * 
-     * @param {LockButtonProps} props
-     * @memberof LockButton
-     */
-    constructor(props: LockButtonProps) {
-        super(props);
-
-        this.state = {
-            locked: false,
-        };
-    }
-
-    /**
-     * Called by React after component is inserted into the DOM tree.
-     *
-     * @memberof LockButton
-     */
-    public componentDidMount = (): void => {
-        const drawKey = localStorage.getItem(this.props.card.key);
-
-        if (drawKey === this.props.draw.key) {
-            this.setState({locked: true});
-        }
-    };
-
+class LockButton extends React.Component<LockButtonProps> {
     /**
      * Called by React to render the component.
      *
@@ -56,7 +21,7 @@ class LockButton extends React.Component<LockButtonProps, LockButtonState> {
      */
     public render = (): JSX.Element => {
         const classes = ['lock'];
-        if (this.state.locked) {
+        if (this.props.locked) {
             classes.push('locked');
         }
 
@@ -66,7 +31,7 @@ class LockButton extends React.Component<LockButtonProps, LockButtonState> {
                 onClick={this.handleClick}
                 type="button"
             >
-                {this.state.locked ? 'Unlock' : 'Lock'}
+                {this.props.locked ? 'Unlock' : 'Lock'}
             </button>
         );
     };
@@ -77,15 +42,9 @@ class LockButton extends React.Component<LockButtonProps, LockButtonState> {
      * @private
      * @memberof LockButton
      */
-    private handleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
-        const locked = !this.state.locked;
-
-        this.setState({locked});
-
-        if (locked) {
-            localStorage.setItem(this.props.card.key, this.props.draw.key);
-        } else {
-            localStorage.removeItem(this.props.card.key);
+    private handleClick = (): void => {
+        if (this.props.onClick) {
+            this.props.onClick(this.props.card, !this.props.locked);
         }
     };
 }

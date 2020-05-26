@@ -8,8 +8,8 @@ import Select, {GroupedOptionsType, GroupType, Styles, ValueType} from 'react-se
  */
 interface CardRemoverProps {
     deck: Deck,
-    className: string,
-    onChange: (keys: string[]) => void,
+    className?: string,
+    onChange?: (keys: string[]) => void,
 };
 
 /**
@@ -169,7 +169,9 @@ class CardRemover extends React.Component<CardRemoverProps> {
             localStorage.removeItem('removed-cards');
         }
 
-        this.props.onChange(keys);
+        if (this.props.onChange) {
+            this.props.onChange(keys);
+        }
     };
 };
 

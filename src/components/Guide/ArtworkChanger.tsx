@@ -9,8 +9,8 @@ import Select, {Styles, ValueType} from 'react-select';
 interface ArtworkChangerProps {
     artwork: Artwork[],
     artworkKey: string,
-    className: string,
-    onChange: (option: ValueType<Option>) => void,
+    className?: string,
+    onChange?: (option: ValueType<Option>) => void,
 };
 
 /**

@@ -201,6 +201,9 @@ class Spread extends React.Component<SpreadProps, SpreadState> {
                 index = this.state.deck[card.deck].findIndex(
                     (each: HighCard | LowCard) => each.key === drawKey
                 );
+                if (index === -1) { // Locked card not in deck; remove it
+                    localStorage.removeItem(card.key);
+                }
             }
 
             if (card.deck === 'high') {

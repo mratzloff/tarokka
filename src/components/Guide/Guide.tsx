@@ -28,6 +28,7 @@ interface GuideProps {
 interface GuideState {
     draws: Array<HighCard | LowCard>,
     error: string,
+    lockedDrawKeys: (string | null)[],
     modalOpen: boolean,
     spread: SpreadCard[],
 };
@@ -82,6 +83,7 @@ class Guide extends React.Component<GuideProps, GuideState> {
         this.state = {
             draws: [],
             error: '',
+            lockedDrawKeys: [],
             modalOpen: false,
             spread: [],
         };
@@ -124,12 +126,12 @@ class Guide extends React.Component<GuideProps, GuideState> {
                             artwork={this.props.data.artwork}
                             artworkKey={this.props.artworkKey}
                             className="form-field"
-                            onChange={this.sendArtworkChange}
+                            onChange={this.handleArtworkChange}
                         />
                         <CardRemover
                             className="form-field"
                             deck={this.props.data.deck}
-                            onChange={this.sendRemovedCards}
+                            onChange={this.handleRemovedCards}
                         />
                     </div>
                     {!this.state.error &&
@@ -153,6 +155,49 @@ class Guide extends React.Component<GuideProps, GuideState> {
     };
 
     /**
+     * Returns an array of keys for locked cards from local storage.
+     *
+     * @private
+     * @memberof Guide
+     */
+    private getLockedCardKeys = (spread: SpreadCard[]): (string | null)[] => {
+        return spread.map(each => localStorage.getItem(each.key));
+    };
+
+    /**
+     * Sends artwork change message to {@link Spread}.
+     *
+     * @private
+     * @memberof Guide
+     */
+    private handleArtworkChange = (option: ValueType<Option>): void => {
+        const key = (option as Option).value;
+        this.channel.postMessage({key, type: 'change-artwork'});
+    };
+
+    /**
+     * Sets appropriate state in response to a lock button click.
+     *
+     * @private
+     * @memberof Guide
+     */
+    private handleLockButtonClick = (card: SpreadCard, locked: boolean): void => {
+        const index = this.state.spread.findIndex(each => each.key === card.key);
+        const lockedDrawKeys = this.state.lockedDrawKeys.slice();
+        const draw = this.state.draws[index];
+
+        if (locked && draw) {
+            lockedDrawKeys[index] = draw.key;
+            localStorage.setItem(card.key, draw.key);
+        } else {
+            lockedDrawKeys[index] = null;
+            localStorage.removeItem(card.key);
+        }
+
+        this.setState({lockedDrawKeys});
+    };
+
+    /**
      * Receives broadcasts from {@link Spread} and updates the state
      * accordingly.
      *
@@ -167,9 +212,26 @@ class Guide extends React.Component<GuideProps, GuideState> {
         this.setState({
             draws: message.draws,
             error: message.error,
+            lockedDrawKeys: this.getLockedCardKeys(message.spread),
             modalOpen: !!message.error,
             spread: message.spread,
         });
+    };
+
+    /**
+     * Sends remove card message to {@link Spread}.
+     *
+     * @private
+     * @memberof Guide
+     */
+    private handleRemovedCards = (keys: string[]): void => {
+        this.state.lockedDrawKeys.map((each, index) => {
+            if (each && keys.includes(each) && this.state.spread[index]) {
+                localStorage.removeItem(this.state.spread[index].key);
+            }
+        });
+
+        this.channel.postMessage({keys, type: 'remove-cards'});
     };
 
     /**
@@ -252,11 +314,20 @@ class Guide extends React.Component<GuideProps, GuideState> {
                 );
         }
 
+        let locked = false;
+        if (this.state.draws[index]) {
+            locked = (this.state.lockedDrawKeys[index] === this.state.draws[index].key);
+        }
+
         return (
             <div key={card.name}>
                 <h2>
                     {article}{card.name}
-                    <LockButton card={card} draw={this.state.draws[index]} />
+                    <LockButton
+                        card={card}
+                        locked={locked}
+                        onClick={this.handleLockButtonClick}
+                    />
                 </h2>
                 {description}
             </div>
@@ -325,17 +396,6 @@ class Guide extends React.Component<GuideProps, GuideState> {
     };
 
     /**
-     * Sends artwork change message to {@link Spread}.
-     *
-     * @private
-     * @memberof Guide
-     */
-    private sendArtworkChange = (option: ValueType<Option>): void => {
-        const key = (option as Option).value;
-        this.channel.postMessage({key, type: 'change-artwork'});
-    };
-
-    /**
      * Send data request message to {@link Spread}.
      *
      * @private
@@ -343,16 +403,6 @@ class Guide extends React.Component<GuideProps, GuideState> {
      */
     private sendDataRequest = (): void => {
         this.channel.postMessage({type: 'send-data'});
-    };
-
-    /**
-     * Sends remove card message to {@link Spread}.
-     *
-     * @private
-     * @memberof Guide
-     */
-    private sendRemovedCards = (keys: string[]): void => {
-        this.channel.postMessage({keys, type: 'remove-cards'});
     };
 }
 
