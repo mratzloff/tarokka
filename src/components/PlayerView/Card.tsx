@@ -27,7 +27,7 @@ class Card extends React.Component<CardProps> {
         let backgroundImage = '';
 
         if (this.props.draw) {
-            backgroundImage = this.getCardImage(this.props.draw.image);
+            backgroundImage = this.getCardImage(this.props.draw.key);
         }
 
         return (
@@ -50,8 +50,8 @@ class Card extends React.Component<CardProps> {
      * @private
      * @memberof Card
      */
-    private getCardImage = (image: string): string => {
-        return `url(images/${this.props.artworkKey}/${image})`;
+    private getCardImage = (key: string): string => {
+        return `url(images/${this.props.artworkKey}/${key}.png)`;
     };
 
     /**

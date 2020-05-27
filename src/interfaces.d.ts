@@ -45,12 +45,11 @@ interface Dictionary<T> {
  * @interface HighCard
  */
 interface HighCard {
+    key: readonly string, // Must be unique for entire deck
+    name: readonly string,
     allies: readonly string[],
     alliesSecretText: readonly string[],
     alliesText: readonly string[],
-    image: readonly string,
-    key: readonly string, // Must be unique for entire deck
-    name: readonly string,
     strahdSecretText: readonly string,
     strahdText: readonly string,
 };
@@ -61,10 +60,9 @@ interface HighCard {
  * @interface LowCard
  */
 interface LowCard {
-    image: readonly string,
     key: readonly string, // Must be unique for entire deck
-    location: readonly string,
     name: readonly string,
+    location: readonly string,
     secretText: readonly string,
     suit: readonly string,
     text: readonly string,

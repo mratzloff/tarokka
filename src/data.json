@@ -12,6 +12,8 @@
     "deck": {
         "high": [
             {
+                "key": "ghost",
+                "name": "Ghost",
                 "allies": [
                     "Sir Godfrey Gwilym",
                     "Sir Klutz"
@@ -24,13 +26,12 @@
                     "I see a fallen paladin of the fallen order of knights. He lingers like a ghost in a dead dragon's lair.",
                     "Stir the spirit of the clumsy knight whose crypt lies deep within the castle."
                 ],
-                "image": "high/0.png",
-                "key": "ghost",
-                "name": "Ghost",
                 "strahdSecretText": "Strahd faces the characters in the tomb of King Barov and Queen Ravenovia (area K88).",
                 "strahdText": "Look to the father's tomb."
             },
             {
+                "key": "innocent",
+                "name": "Innocent",
                 "allies": [
                     "Parriwimple",
                     "Ireena Kolyana"
@@ -43,13 +44,12 @@
                     "I see a young man with a kind heart. A mother's boy! He is strong in body but weak of mind. Seek him out in the village of Barovia.",
                     "Evil's bride is the one you seek!"
                 ],
-                "image": "high/1.png",
-                "key": "innocent",
-                "name": "Innocent",
                 "strahdSecretText": "Strahd faces the characters in Sergei's tomb (area K85).",
                 "strahdText": "He dwells with the one whose blood sealed his doom, a brother of light snuffed out too soon."
             },
             {
+                "key": "marionette",
+                "name": "Marionette",
                 "allies": [
                     "Pidlwick II",
                     "Cloven Belview"
@@ -62,13 +62,12 @@
                     "What horror is this? I see a man made by a man. Ageless and alone, it haunts the towers of the castle.",
                     "Look for a man of music, a man with two heads. He lives in a place of great hunger and sorrow."
                 ],
-                "image": "high/2.png",
-                "key": "marionette",
-                "name": "Marionette",
                 "strahdSecretText": "Strahd faces the characters in the north tower peak (area K60).",
                 "strahdText": "Look to great heights. Find the beating heart of the castle. He waits nearby."
             },
             {
+                "key": "darklord",
+                "name": "Darklord",
                 "allies": [
                     "No one"
                 ],
@@ -78,13 +77,12 @@
                 "alliesText": [
                     "Ah, the worst of all \"truths\": You must face the evil of this land alone!"
                 ],
-                "image": "high/3.png",
-                "key": "darklord",
-                "name": "Darklord",
                 "strahdSecretText": "Strahd faces the characters in his tomb (area K86).",
                 "strahdText": "He lurks in the depths of darkness, in the one place to which he must return."
             },
             {
+                "key": "mists",
+                "name": "Mists",
                 "allies": [
                     "Ezmerelda d'Avenir"
                 ],
@@ -94,13 +92,12 @@
                 "alliesText": [
                     "A vistana wanders this land alone, searching for her mentor. She does not stay in one place for long. Seek her out at Saint Markovia's abbey, near the mists."
                 ],
-                "image": "high/4.png",
-                "key": "mists",
-                "name": "Mists",
                 "strahdSecretText": "This card offers no clue about where the final showdown with Strahd will occur. It can happen anywhere you like in Castle Ravenloft. Alternatively, Madam Eva tells the characters to return to her after at least three days, and she will consult the cards again for them, but only to discern the location of their enemy.",
                 "strahdText": "The cards can't see where the evil lurks. The mists obscure all."
             },
             {
+                "key": "executioner",
+                "name": "Executioner",
                 "allies": [
                     "Ismark Kolyanovich"
                 ],
@@ -110,13 +107,12 @@
                 "alliesText": [
                     "Seek out the brother of the devil's bride. They call him \"the lesser,\" but he has a powerful soul"
                 ],
-                "image": "high/5.png",
-                "key": "executioner",
-                "name": "Executioner",
                 "strahdSecretText": "Strahd faces the characters at the overlook (area K6).",
                 "strahdText": "I see a dark figure on a balcony, looking down upon this tortured land with a twisted smile."
             },
             {
+                "key": "broken-one",
+                "name": "Broken One",
                 "allies": [
                     "Mad Mage",
                     "Donavich"
@@ -129,13 +125,12 @@
                     "Your greatest ally will be a wizard. His mind is broken, but his spells are strong.",
                     "I see a man of faith whose sanity hangs by a thread. He has lost someone close to him."
                 ],
-                "image": "high/6.png",
-                "key": "broken-one",
-                "name": "Broken One",
                 "strahdSecretText": "Strahd faces the characters in Sergei's tomb (area K86).",
                 "strahdText": "He haunts the tomb of the man he envied above all."
             },
             {
+                "key": "tempter",
+                "name": "Tempter",
                 "allies": [
                     "Arabelle",
                     "Vasilka"
@@ -148,13 +143,12 @@
                     "I see a child - a Vistana. You must hurry, for her fate hangs in the balance. Find her at the lake!",
                     "I hear a wedding bell, or perhaps a death knell. It calls the to a mountainside abbey, wherein you will find a woman who is more than the sum of her parts."
                 ],
-                "image": "high/7.png",
-                "key": "tempter",
-                "name": "Tempter",
                 "strahdSecretText": "Strahd confronts the characters in the treasury (area K41). \"A woman of great beauty\" refers to the portrait of Tatyana hanging in the castle's study (area K37), which contains a secret door that leads to the treasury.",
                 "strahdText": "I see a secret place - a vault of temptation hidden behind a woman of great beauty. The evil waits atop his tower of treasure."
             },
             {
+                "key": "beast",
+                "name": "Beast",
                 "allies": [
                     "Zuleika Toranescu"
                 ],
@@ -164,13 +158,12 @@
                 "alliesText": [
                     "A werewolf holds a secret hatred for your enemy. Use her hatred to your advantage."
                 ],
-                "image": "high/8.png",
-                "key": "beast",
-                "name": "Beast",
                 "strahdSecretText": "Strahd faces the characters in the audience hall (area K25).",
                 "strahdText": "The beast sits on his dark throne."
             },
             {
+                "key": "donjon",
+                "name": "Donjon",
                 "allies": [
                     "Victor Vallakovich",
                     "Stella Wachter"
@@ -183,13 +176,12 @@
                     "Search for a troubled young man surrounded by wealth and madness. His home is his prison",
                     "Find a girl driven to insanity, locked in the heart of her dead father's house. Curing her madness is key to your success."
                 ],
-                "image": "high/9.png",
-                "key": "donjon",
-                "name": "Donjon",
                 "strahdSecretText": "Strahd faces the characters in the hall of bones (area K67).",
                 "strahdText": "He lurks in a hall of bones, in the dark pits of his castle."
             },
             {
+                "key": "raven",
+                "name": "Raven",
                 "allies": [
                     "Davian Martikov"
                 ],
@@ -199,13 +191,12 @@
                 "alliesText": [
                     "Find the leader of the feathered ones who live among the vines. Though old, he has one more fight left in him."
                 ],
-                "image": "high/10.png",
-                "key": "raven",
-                "name": "Raven",
                 "strahdSecretText": "Strahd faces the characters in the tomb of King Barov and Queen Ravenovia (area K88).",
                 "strahdText": "Look to the mother's tomb."
             },
             {
+                "key": "seer",
+                "name": "Seer",
                 "allies": [
                     "Kasimir Velikov"
                 ],
@@ -215,13 +206,12 @@
                 "alliesText": [
                     "Look for a dusk elf living among the Vistani. He has suffered a great loss and is haunted by dark dreams. Help him, and he will help you in return."
                 ],
-                "image": "high/11.png",
-                "key": "seer",
-                "name": "Seer",
                 "strahdSecretText": "Strahd faces the characters in the study (area K37).",
                 "strahdText": "He waits for you in a place of wisdom, warmth, and despair. Great secrets are there."
             },
             {
+                "key": "artifact",
+                "name": "Artifact",
                 "allies": [
                     "Rictavio"
                 ],
@@ -231,13 +221,12 @@
                 "alliesText": [
                     "Look for an entertaining man with a monkey. This man is more than he seems."
                 ],
-                "image": "high/12.png",
-                "key": "artifact",
-                "name": "Artifact",
                 "strahdSecretText": "Strahd faces the characters in the chapel (area K15).",
                 "strahdText": "He lurks in the darkness where the morning light once shone - a sacred place."
             },
             {
+                "key": "horseman",
+                "name": "Horseman",
                 "allies": [
                     "Nikolai Wachter",
                     "Arrigal"
@@ -250,409 +239,366 @@
                     "I see a dead man of noble birth, guarded by his widow. Return to life the dead man's corpse, and he will be your staunch ally.",
                     "A man of death named Arrigal will forsake his dark lord to serve your cause. Beware! He has a rotten soul."
                 ],
-                "image": "high/13.png",
-                "key": "horseman",
-                "name": "Horseman",
                 "strahdSecretText": "Strahd faces the characters in his tomb (area K86).",
                 "strahdText": "He lurks in the one place to which he must return - a place of death."
             }
         ],
         "low": [
             {
-                "image": "low/0.png",
                 "key": "swashbuckler",
-                "location": "Castle Ravenloft",
                 "name": "Swashbuckler",
+                "location": "Castle Ravenloft",
                 "secretText": "The treasure lies in the crypt of Endorovich (chapter4, area K84, crypt 7).",
                 "suit": "Coins",
                 "text": "I see the skeleton of a deadly warrior, lying on a bed of stone flanked by gargoyles.",
                 "value": 1
             },
             {
-                "image": "low/1.png",
                 "key": "philanthropist",
-                "location": "Village of Kresk",
                 "name": "Philanthropist",
+                "location": "Village of Kresk",
                 "secretText": "The treasure is in the nursery of the Abbey of Saint Markovia (chapter8, area S23).",
                 "suit": "Coins",
                 "text": "Look to a place where sickness and madness are bred. Where children once cried, the treasure lies still.",
                 "value": 2
             },
             {
-                "image": "low/2.png",
                 "key": "trader",
-                "location": "The Wizard of Wines",
                 "name": "Trader",
+                "location": "The Wizard of Wines",
                 "secretText": "The treasure lies in the glassblower's workshop in the Wizard of Wines (chapter 12, area W10).",
                 "suit": "Coins",
                 "text": "Look to the wizard of wines! In wood and sand the treasure hides.",
                 "value": 3
             },
             {
-                "image": "low/3.png",
                 "key": "merchant",
-                "location": "Castle Ravenloft",
                 "name": "Merchant",
+                "location": "Castle Ravenloft",
                 "secretText": "The treasure lies in Castle Ravenloft's wine cellar (chapter 4, area K63).",
                 "suit": "Coins",
                 "text": "Seek a cask that once contained the finest wine, of which not a drop remains.",
                 "value": 4
             },
             {
-                "image": "low/4.png",
                 "key": "guild-member",
-                "location": "Castle Ravenloft",
                 "name": "Guild Member",
+                "location": "Castle Ravenloft",
                 "secretText": "The treasure lies in the crypt of Artank Swilovich (chapter 4, area K84, crypt 5).",
                 "suit": "Coins",
                 "text": "I see a room full of bottles. It is the tomb of a guild member.",
                 "value": 5
             },
             {
-                "image": "low/5.png",
                 "key": "beggar",
-                "location": "Town of Vallaki",
                 "name": "Beggar",
+                "location": "Town of Vallaki",
                 "secretText": "The treasure is hidden in Kasimir's hovel (chapter 5, area N9a).",
                 "suit": "Coins",
                 "text": "A wounded elf has what you seek. He will part with the treasure to see his dark dreams fulfilled.",
                 "value": 6
             },
             {
-                "image": "low/6.png",
                 "key": "thief",
-                "location": "River Ivlis Crossroads",
                 "name": "Thief",
+                "location": "River Ivlis Crossroads",
                 "secretText": "The treasure is buried in the graveyard at the River Ivlis crossroads (chapter 2, area F).",
                 "suit": "Coins",
                 "text": "What you seek lies at the crossroads of life and death, among the buried dead.",
                 "value": 7
             },
             {
-                "image": "low/7.png",
                 "key": "tax-collector",
-                "location": "Town of Vallaki",
                 "name": "Tax Collector",
+                "location": "Town of Vallaki",
                 "secretText": "The treasure is hidden in the Vistani treasure wagon (chapter 5, area N9i). \"A missing child\" refers to Arabelle (see chapter 2, area L).",
                 "suit": "Coins",
                 "text": "The Vistani have what you seek. A missing child holds the key to the treasure's release.",
                 "value": 8
             },
             {
-                "image": "low/8.png",
                 "key": "miser",
-                "location": "Castle Ravenloft",
                 "name": "Miser",
+                "location": "Castle Ravenloft",
                 "secretText": "The treasure lies in Castle Ravenloft's treasury (chapter 4, area K41).",
                 "suit": "Coins",
                 "text": "Look for a fortress inside a fortress, in a place hidden behind fire.",
                 "value": 9
             },
             {
-                "image": "low/9.png",
                 "key": "rogue",
-                "location": "Town of Vallaki",
                 "name": "Rogue",
+                "location": "Town of Vallaki",
                 "secretText": "The treasure is hidden in the attic of the Blue Water Inn (chapter 5, area N2q).",
                 "suit": "Coins",
                 "text": "I see a nest of ravens. There you will find the prize.",
                 "value": 10
             },
             {
-                "image": "low/10.png",
                 "key": "monk",
-                "location": "Village of Kresk",
                 "name": "Monk",
+                "location": "Village of Kresk",
                 "secretText": "The treasure lies in the main hall of the Abbey of Saint Markovia (chapter 8, area S13).",
                 "suit": "Glyphs",
                 "text": "The treasure you seek is hidden behind the sun, in the house of a saint.",
                 "value": 1
             },
             {
-                "image": "low/11.png",
                 "key": "missionary",
-                "location": "Village of Kresk",
                 "name": "Missionary",
+                "location": "Village of Kresk",
                 "secretText": "The treasure is hidden inside on the scarecrows in the garden of the Abbey of Saint Markovia (chapter 8, area S9).",
                 "suit": "Glyphs",
                 "text": "I see a garden dusted with snow, watched over by a scarecrow with a sackcloth grin. Look not to the garden but to the guardian.",
                 "value": 2
             },
             {
-                "image": "low/12.png",
                 "key": "healer",
-                "location": "Village of Kresk",
                 "name": "Healer",
+                "location": "Village of Kresk",
                 "secretText": "The treasure lies beneath the gazebo in the Shrine of the White Sun (chapter 8, area S4).",
                 "suit": "Glyphs",
                 "text": "Look to the west. Find a pool blessed by the light of the white sun.",
                 "value": 3
             },
             {
-                "image": "low/13.png",
                 "key": "shepherd",
-                "location": "Castle Ravenloft",
                 "name": "Shepherd",
+                "location": "Castle Ravenloft",
                 "secretText": "The treasure lies in the tomb of King Barov and Queen Ravenovia (chapter 4, area K88).",
                 "suit": "Glyphs",
                 "text": "Find the mother - she who gave birth to evil.",
                 "value": 4
             },
             {
-                "image": "low/14.png",
                 "key": "druid",
-                "location": "Yester Hill",
                 "name": "Druid",
+                "location": "Yester Hill",
                 "secretText": "The treasure lies at the base of the Gulthias tree (chapter 14, area Y4). Any wereraven encountered in the wilderness can lead the characters to the location.",
                 "suit": "Glyphs",
                 "text": "An evil tree grows atop a hill of graves where the ancient dead sleep. The ravens can help you find it. Look for the treasure there.",
                 "value": 5
             },
             {
-                "image": "low/15.png",
                 "key": "anarchist",
-                "location": "Castle Ravenloft",
                 "name": "Anarchist",
+                "location": "Castle Ravenloft",
                 "secretText": "The treasure lies in Castle Ravenloft's hall of bones (chapter 4, area K67).",
                 "suit": "Glyphs",
                 "text": "I see walls of bones, the chandelier of bones, and table of bones - all that remains of enemies long forgotten.",
                 "value": 6
             },
             {
-                "image": "low/16.png",
                 "key": "charlatan",
-                "location": "Old Bonegrinder",
                 "name": "Charlatan",
+                "location": "Old Bonegrinder",
                 "secretText": "The treasure lies in the attic of Old Bonegrinder (chapter 6, areas O4).",
                 "suit": "Glyphs",
                 "text": "I see a lonely mill on a precipice. The treasure lies within.",
                 "value": 7
             },
             {
-                "image": "low/17.png",
                 "key": "bishop",
-                "location": "Amber Temple",
                 "name": "Bishop",
+                "location": "Amber Temple",
                 "secretText": "The treasure lies in the sealed treasury of the Amber Temple (chapter 13, area X40).",
                 "suit": "Glyphs",
                 "text": "What you seek lies in a pile of treasure beyond a set of amber doors.",
                 "value": 8
             },
             {
-                "image": "low/18.png",
                 "key": "traitor",
-                "location": "Town of Vallaki",
                 "name": "Traitor",
+                "location": "Town of Vallaki",
                 "secretText": "The treasure is hidden in the master bedroom of the Wachterhaus (chapter 5, area N4o).",
                 "suit": "Glyphs",
                 "text": "Look for a wealthy woman. A staunch ally of the devil, she keeps the treasure under lock and key, with the bones of an ancient enemy.",
                 "value": 9
             },
             {
-                "image": "low/19.png",
                 "key": "priest",
-                "location": "Castle Ravenloft",
                 "name": "Priest",
+                "location": "Castle Ravenloft",
                 "secretText": "The treasure lies in Castle Ravenloft's chapel (chapter 4, area K15).",
                 "suit": "Glyphs",
                 "text": "You will find what you seek in the castle, amid the ruins of a place of supplication",
                 "value": 10
             },
             {
-                "image": "low/20.png",
                 "key": "transmuter",
-                "location": "Castle Ravenloft",
                 "name": "Transmuter",
+                "location": "Castle Ravenloft",
                 "secretText": "The treasure lies in Castle Ravenloft's north tower peak (chapter 4, area K60).",
                 "suit": "Stars",
                 "text": "Go to a place of dizzying heights, where the stone itself is alive!",
                 "value": 1
             },
             {
-                "image": "low/21.png",
                 "key": "diviner",
-                "location": "Tser Pool Encampment",
                 "name": "Diviner",
+                "location": "Tser Pool Encampment",
                 "secretText": "The treasure lies in Madam Eva's encampment (chapter 2, area G). If she is the one performing the card reading, she says, \"I think the treasure is under my very nose!\"",
                 "suit": "Stars",
                 "text": "Look to the one who sees all. The treasure is hidden in her camp.",
                 "value": 2
             },
             {
-                "image": "low/22.png",
                 "key": "enchanter",
-                "location": "Ruins of Berez",
                 "name": "Enchanter",
+                "location": "Ruins of Berez",
                 "secretText": "The treasure lies under Marina's monument in Berez (chapter 10, area U5). \"The master of the marsh\" refers to Burgomaster Lazlo Ulrich (area U2), whose ghost can point the characters toward the monument.",
                 "suit": "Stars",
                 "text": "I see a kneeling woman - a rose of great beauty plucked too soon. The master of the marsh knows of whom I speak.",
                 "value": 3
             },
             {
-                "image": "low/23.png",
                 "key": "abjurer",
-                "location": "Argynvostholt",
                 "name": "Abjurer",
+                "location": "Argynvostholt",
                 "secretText": "The treasure lies in the beacon of Argynvostholt (chapter 7, area Q53). \"Great stone dragon\" refers to the statue in area Q1.",
                 "suit": "Stars",
                 "text": "I see a fallen house guarded by a great stone dragon. Look to the highest peak.",
                 "value": 4
             },
             {
-                "image": "low/24.png",
                 "key": "elementalist",
-                "location": "Amber Temple",
                 "name": "Elementalist",
+                "location": "Amber Temple",
                 "secretText": "The treasure is inside a model of Castle Ravenloft in the Amber Temple (chapter 13, area X20).",
                 "suit": "Stars",
                 "text": "The treasure is hidden in a small castle beneath a mountain, guarded by amber giants.",
                 "value": 5
             },
             {
-                "image": "low/25.png",
                 "key": "evoker",
-                "location": "Castle Ravenloft",
                 "name": "Evoker",
+                "location": "Castle Ravenloft",
                 "secretText": "The treasure is hidden in the crypt of Gralmore Nimblenobs (chapter 4, area K84, crypt 37).",
                 "suit": "Stars",
                 "text": "Search for the crypt of the wizard ordinaire. His staff is the key.",
                 "value": 6
             },
             {
-                "image": "low/26.png",
                 "key": "illusionist",
-                "location": "Town of Vallaki",
                 "name": "Illusionist",
+                "location": "Town of Vallaki",
                 "secretText": "The treasure lies in Rictavio's carnival wagon (chapter 5, area N5).",
                 "suit": "Stars",
                 "text": "A man is not what he seems. He comes here in a carnival wagon. Therein lies what you seek.",
                 "value": 7
             },
             {
-                "image": "low/27.png",
                 "key": "necromancer",
-                "location": "Castle Ravenloft",
                 "name": "Necromancer",
+                "location": "Castle Ravenloft",
                 "secretText": "The treasure lies in Castle Ravenloft's study (chapter 4, area K37).",
                 "suit": "Stars",
                 "text": "A woman hangs above a roaring fire. Find her and you will find the treasure.",
                 "value": 8
             },
             {
-                "image": "low/28.png",
                 "key": "conjurer",
-                "location": "Ruins of Berez",
                 "name": "Conjurer",
+                "location": "Ruins of Berez",
                 "secretText": "The treasure is in Baba Lysaga's hut (chapter 10, area U3).",
                 "suit": "Stars",
                 "text": "I see a dead village, drowned by a river, ruled by one who has brought great evil into the world.",
                 "value": 9
             },
             {
-                "image": "low/29.png",
                 "key": "wizard",
-                "location": "Town of Vallaki",
                 "name": "Wizard",
+                "location": "Town of Vallaki",
                 "secretText": "The treasure lies on the top floor of Van Richten's Tower (chapter 11, area V7).",
                 "suit": "Stars",
                 "text": "Look for a wizard's tower on a lake. Let the wizard's name and servant guide you to that which you seek.",
                 "value": 10
             },
             {
-                "image": "low/30.png",
                 "key": "avenger",
-                "location": "Argynvostholt",
                 "name": "Avenger",
+                "location": "Argynvostholt",
                 "secretText": "The treasure is in the possession of Vladimir Horngaard in Argynvostholt (chapter 7, area Q36).",
                 "suit": "Swords",
                 "text": "The treasure lies in a dragon's house, in hands once clean and now corrupted.",
                 "value": 1
             },
             {
-                "image": "low/31.png",
                 "key": "paladin",
-                "location": "Castle Ravenloft",
                 "name": "Paladin",
+                "location": "Castle Ravenloft",
                 "secretText": "The treasure lies in Sergei's tomb (chapter 4, area K85).",
                 "suit": "Swords",
                 "text": "I see a sleeping prince, a servant of the light and the brother of darkness. The treasure lies with him.",
                 "value": 2
             },
             {
-                "image": "low/32.png",
                 "key": "soldier",
-                "location": "Tsolenka Pass",
                 "name": "Soldier",
+                "location": "Tsolenka Pass",
                 "secretText": "The treasure lies on the rooftop of the Tsolenka Pass guard tower (chapter 9, area T6).",
                 "suit": "Swords",
                 "text": "Go to the mountains. Climb the white tower guarded by golden knights.",
                 "value": 3
             },
             {
-                "image": "low/33.png",
                 "key": "mercenary",
-                "location": "Castle Ravenloft",
                 "name": "Mercenary",
+                "location": "Castle Ravenloft",
                 "secretText": "The treasure lies in a crypt in Castle Ravenloft (chapter 4, area K84, crypt 31).",
                 "suit": "Swords",
                 "text": "The thing you seek lies with the dead, under mountains of gold coins.",
                 "value": 1
             },
             {
-                "image": "low/34.png",
                 "key": "myrmidon",
-                "location": "Werewolf Den",
                 "name": "Myrmidon",
+                "location": "Werewolf Den",
                 "secretText": "The treasure lies in the shrine of the Mother Night in the werewolf den (chapter 15, area Z7).",
                 "suit": "Swords",
                 "text": "Look for a den of wolves in the hills overlooking a mountain lake. The treasure belongs to Mother Night.",
                 "value": 5
             },
             {
-                "image": "low/35.png",
                 "key": "berserker",
-                "location": "Castle Ravenloft",
                 "name": "Berserker",
+                "location": "Castle Ravenloft",
                 "secretText": "The treasure lies in the crypt of General Kroval \"Mad Dog\" Grislek (chapter 4, area K84, crypt 38).",
                 "suit": "Swords",
                 "text": "Find the Mad Dog's crypt. The treasure lies within, beneath the blackened bones.",
                 "value": 6
             },
             {
-                "image": "low/36.png",
                 "key": "hooded-one",
-                "location": "Amber Temple",
                 "name": "Hooded One",
+                "location": "Amber Temple",
                 "secretText": "The treasure inside the head of a giant statue in the Amber Temple (chapter 13, area X5a).",
                 "suit": "Swords",
                 "text": "I see a faceless god. He awaits you at the end of a long and winding road, deep in the mountains.",
                 "value": 7
             },
             {
-                "image": "low/37.png",
                 "key": "dictator",
-                "location": "Castle Ravenloft",
                 "name": "Dictator",
+                "location": "Castle Ravenloft",
                 "secretText": "The treasure lies in Castle Ravenloft's audience hall (chapter 4, area K25).",
                 "suit": "Swords",
                 "text": "I see a throne fit for a king.",
                 "value": 8
             },
             {
-                "image": "low/38.png",
                 "key": "torturer",
-                "location": "Town of Vallaki",
                 "name": "Torturer",
+                "location": "Town of Vallaki",
                 "secretText": "The treasure is in the attic of the burgomaster's mansion in Vallaki (chapter 5, area N3s).",
                 "suit": "Swords",
                 "text": "There is a town where all is not well. There you will find a house of corruption, and within, a dark room full of still ghosts.",
                 "value": 9
             },
             {
-                "image": "low/39.png",
                 "key": "warrior",
-                "location": "Castle Ravenloft",
                 "name": "Warrior",
+                "location": "Castle Ravenloft",
                 "secretText": "The treasure lies in Strahd's tomb (chapter 4, area K86).",
                 "suit": "Swords",
                 "text": "That which you seek lies in the womb of darkness, the devil's \"lair\": the one place to which he must return.",
