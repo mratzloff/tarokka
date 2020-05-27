@@ -1,4 +1,4 @@
-import './Guide.scss';
+import './DungeonMasterView.scss';
 
 import {BroadcastChannel} from 'broadcast-channel';
 import React from 'react';
@@ -11,21 +11,21 @@ import CardRemover from './CardRemover';
 import LockButton from './LockButton';
 
 /**
- * React props for {@link Guide}.
+ * React props for {@link DungeonMasterView}.
  *
- * @interface GuideProps
+ * @interface DungeonMasterViewProps
  */
-interface GuideProps {
+interface DungeonMasterViewProps {
     artworkKey: string,
     data: Data,
 };
 
 /**
- * React state for {@link Guide}.
+ * React state for {@link DungeonMasterView}.
  *
- * @interface GuideState
+ * @interface DungeonMasterViewState
  */
-interface GuideState {
+interface DungeonMasterViewState {
     draws: Array<HighCard | LowCard>,
     error: string,
     lockedDrawKeys: (string | null)[],
@@ -46,18 +46,19 @@ interface DataMessage {
 };
 
 /**
- * The guide, or Dungeon Master view, for a given tarokka reading.
+ * The Dungeon Master view for a given tarokka reading, containing the
+ * reading script as well as various configuration options.
  *
- * @class Guide
- * @extends {React.Component<GuideProps, GuideState>}
+ * @class DungeonMasterView
+ * @extends {React.Component<DungeonMasterViewProps, DungeonMasterViewState>}
  */
-class Guide extends React.Component<GuideProps, GuideState> {
+class DungeonMasterView extends React.Component<DungeonMasterViewProps, DungeonMasterViewState> {
     /**
      * Broadcast channel used to communicate with {@link Spread}.
      *
      * @private
      * @type {BroadcastChannel}
-     * @memberof Guide
+     * @memberof DungeonMasterView
      * @see Spread
      */
     private channel: BroadcastChannel = new BroadcastChannel('tarokka');
@@ -67,17 +68,17 @@ class Guide extends React.Component<GuideProps, GuideState> {
      *
      * @private
      * @type {(ReturnType<typeof setTimeout> | undefined)}
-     * @memberof Guide
+     * @memberof DungeonMasterView
      */
     private timeout: ReturnType<typeof setTimeout> | undefined;
 
     /**
-     * Creates an instance of Guide.
+     * Creates an instance of DungeonMasterView.
      * 
-     * @param {GuideProps} props
-     * @memberof Guide
+     * @param {DungeonMasterViewProps} props
+     * @memberof DungeonMasterView
      */
-    constructor(props: GuideProps) {
+    constructor(props: DungeonMasterViewProps) {
         super(props);
 
         this.state = {
@@ -92,7 +93,7 @@ class Guide extends React.Component<GuideProps, GuideState> {
     /**
      * Called by React after component is inserted into the DOM tree.
      *
-     * @memberof Guide
+     * @memberof DungeonMasterView
      */
     public componentDidMount = (): void => {
         this.channel.onmessage = this.handleMessage;
@@ -105,9 +106,11 @@ class Guide extends React.Component<GuideProps, GuideState> {
     /**
      * Called by React to render the component.
      *
-     * @memberof Guide
+     * @memberof DungeonMasterView
      */
     public render = (): JSX.Element => {
+        document.title = `Tarokka - Dungeon Master's View`;
+
         return (
             <React.Fragment>
                 <Modal
@@ -148,7 +151,7 @@ class Guide extends React.Component<GuideProps, GuideState> {
      * Closes the warning modal.
      *
      * @private
-     * @memberof Guide
+     * @memberof DungeonMasterView
      */
     private closeModal = (): void => {
         this.setState({modalOpen: false});
@@ -158,7 +161,7 @@ class Guide extends React.Component<GuideProps, GuideState> {
      * Returns an array of keys for locked cards from local storage.
      *
      * @private
-     * @memberof Guide
+     * @memberof DungeonMasterView
      */
     private getLockedCardKeys = (spread: SpreadCard[]): (string | null)[] => {
         return spread.map(each => localStorage.getItem(each.key));
@@ -168,7 +171,7 @@ class Guide extends React.Component<GuideProps, GuideState> {
      * Sends artwork change message to {@link Spread}.
      *
      * @private
-     * @memberof Guide
+     * @memberof DungeonMasterView
      */
     private handleArtworkChange = (option: ValueType<Option>): void => {
         const key = (option as Option).value;
@@ -179,7 +182,7 @@ class Guide extends React.Component<GuideProps, GuideState> {
      * Sets appropriate state in response to a lock button click.
      *
      * @private
-     * @memberof Guide
+     * @memberof DungeonMasterView
      */
     private handleLockButtonClick = (card: SpreadCard, locked: boolean): void => {
         const index = this.state.spread.findIndex(each => each.key === card.key);
@@ -202,7 +205,7 @@ class Guide extends React.Component<GuideProps, GuideState> {
      * accordingly.
      *
      * @private
-     * @memberof Guide
+     * @memberof DungeonMasterView
      */
     private handleMessage = (message: DataMessage): void => {
         if (this.timeout) {
@@ -222,10 +225,10 @@ class Guide extends React.Component<GuideProps, GuideState> {
      * Sends remove card message to {@link Spread}.
      *
      * @private
-     * @memberof Guide
+     * @memberof DungeonMasterView
      */
     private handleRemovedCards = (keys: string[]): void => {
-        this.state.lockedDrawKeys.map((each, index) => {
+        this.state.lockedDrawKeys.forEach((each, index) => {
             if (each && keys.includes(each) && this.state.spread[index]) {
                 localStorage.removeItem(this.state.spread[index].key);
             }
@@ -238,7 +241,7 @@ class Guide extends React.Component<GuideProps, GuideState> {
      * Renders text for the Strahd's Enemy card (i.e., an ally against Strahd).
      *
      * @private
-     * @memberof Guide
+     * @memberof DungeonMasterView
      */
     private renderAllyText = (card: SpreadCard, draw: HighCard): JSX.Element => {
         const multiple = draw.alliesText.length > 1;
@@ -287,7 +290,7 @@ class Guide extends React.Component<GuideProps, GuideState> {
      * Renders a card given its spread placement.
      *
      * @private
-     * @memberof Guide
+     * @memberof DungeonMasterView
      */
     private renderCard = (card: SpreadCard, index: number): JSX.Element => {
         let article = '';
@@ -338,7 +341,7 @@ class Guide extends React.Component<GuideProps, GuideState> {
      * Renders text for the Strahd card.
      *
      * @private
-     * @memberof Guide
+     * @memberof DungeonMasterView
      */
     private renderStrahdText = (card: SpreadCard, draw: HighCard): JSX.Element => (
         <ol>
@@ -355,7 +358,7 @@ class Guide extends React.Component<GuideProps, GuideState> {
      * Renders text for the various treasure cards.
      *
      * @private
-     * @memberof Guide
+     * @memberof DungeonMasterView
      */
     private renderTreasureText = (card: SpreadCard, draw: LowCard): JSX.Element => (
         <ol>
@@ -379,7 +382,7 @@ class Guide extends React.Component<GuideProps, GuideState> {
      * Helper to indicate when to turn a card over.
      *
      * @private
-     * @memberof Guide
+     * @memberof DungeonMasterView
      */
     private reveal = (text: string): JSX.Element => {
         return <span><strong>Reveal:</strong> The {text}</span>;
@@ -389,7 +392,7 @@ class Guide extends React.Component<GuideProps, GuideState> {
      * Helper to indicate when to say flavor text.
      *
      * @private
-     * @memberof Guide
+     * @memberof DungeonMasterView
      */
     private say = (text: string): JSX.Element => {
         return <span><strong>Say:</strong> "{text}"</span>;
@@ -399,11 +402,11 @@ class Guide extends React.Component<GuideProps, GuideState> {
      * Send data request message to {@link Spread}.
      *
      * @private
-     * @memberof Guide
+     * @memberof DungeonMasterView
      */
     private sendDataRequest = (): void => {
         this.channel.postMessage({type: 'send-data'});
     };
 }
 
-export default Guide;
+export default DungeonMasterView;

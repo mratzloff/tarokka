@@ -1,14 +1,14 @@
-import './Spread.scss';
+import './PlayerView.scss';
 
 import {BroadcastChannel} from 'broadcast-channel';
 import React from 'react';
 
-import GuideButton from '../GuideButton/GuideButton';
 import Modal from '../Modal/Modal';
 import Card from './Card';
+import DungeonMasterViewButton from './DungeonMasterViewButton';
 
 /**
- * Message from {@link Guide} requesting the component change the artwork.
+ * Message from {@link DungeonMasterView} requesting the component change the artwork.
  *
  * @interface ChangeArtworkMessage
  */
@@ -18,7 +18,7 @@ interface ChangeArtworkMessage {
 };
 
 /**
- * Message from {@link Guide} requesting the component remove cards from
+ * Message from {@link DungeonMasterView} requesting the component remove cards from
  * the deck.
  *
  * @interface RemoveCardsMessage
@@ -29,7 +29,7 @@ interface RemoveCardsMessage {
 };
 
 /**
- * Message from {@link Guide} requesting the component send the latest data.
+ * Message from {@link DungeonMasterView} requesting the component send the latest data.
  *
  * @interface SendDataMessage
  */
@@ -38,21 +38,21 @@ interface SendDataMessage {
 };
 
 /**
- * React props for {@link Spread}.
+ * React props for {@link PlayerView}.
  *
- * @interface SpreadProps
+ * @interface PlayerViewProps
  */
-interface SpreadProps {
+interface PlayerViewProps {
     artworkKey: string,
     data: Data,
 };
 
 /**
- * React state for {@link Spread}.
+ * React state for {@link PlayerView}.
  *
- * @interface SpreadState
+ * @interface PlayerViewState
  */
-interface SpreadState {
+interface PlayerViewState {
     artworkKey: string,
     deck: Deck,
     draws: Array<HighCard | LowCard>,
@@ -62,7 +62,7 @@ interface SpreadState {
 };
 
 /**
- * Expected broadcast message from {@link Guide}.
+ * Expected broadcast message from {@link DungeonMasterView}.
  *
  * @type Message
  */
@@ -71,32 +71,32 @@ type Message = ChangeArtworkMessage | SendDataMessage;
 /**
  * The spread, or arrangement of cards, for a given tarokka reading.
  *
- * @class Spread
- * @extends {React.Component<SpreadProps, SpreadState>}
+ * @class PlayerView
+ * @extends {React.Component<PlayerViewProps, PlayerViewState>}
  */
-class Spread extends React.Component<SpreadProps, SpreadState> {
+class PlayerView extends React.Component<PlayerViewProps, PlayerViewState> {
     readonly deckTooSmallError =
         `The deck is too small, and there aren't enough cards for a reading. ` +
         `Please re-add some high or low cards that were previously removed in ` +
         `the Dungeon Master's view.`;
 
     /**
-     * Broadcast channel used to communicate with {@link Guide}.
+     * Broadcast channel used to communicate with {@link DungeonMasterView}.
      *
      * @private
      * @type {BroadcastChannel}
-     * @memberof Spread
-     * @see Guide
+     * @memberof PlayerView
+     * @see DungeonMasterView
      */
     private channel: BroadcastChannel = new BroadcastChannel('tarokka');
 
     /**
-     * Creates an instance of Spread.
+     * Creates an instance of PlayerView.
      * 
-     * @param {SpreadProps} props
-     * @memberof Spread
+     * @param {PlayerViewProps} props
+     * @memberof PlayerView
      */
-    public constructor(props: SpreadProps) {
+    public constructor(props: PlayerViewProps) {
         super(props);
 
         this.state = {
@@ -112,7 +112,7 @@ class Spread extends React.Component<SpreadProps, SpreadState> {
     /**
      * Called by React after component is inserted into the DOM tree.
      *
-     * @memberof Spread
+     * @memberof PlayerView
      */
     public componentDidMount = (): void => {
         this.channel.onmessage = this.handleMessage;
@@ -131,30 +131,34 @@ class Spread extends React.Component<SpreadProps, SpreadState> {
     /**
      * Called by React to render the component.
      *
-     * @memberof Spread
+     * @memberof PlayerView
      */
-    public render = (): JSX.Element => (
-        <React.Fragment>
-            <Modal heading="Warning" isOpen={!!this.state.error}>
-                <p>{this.state.error}</p>
-                <p>This message will close automatically.</p>
-            </Modal>
+    public render = (): JSX.Element => {
+        document.title = `Tarokka`;
 
-            <GuideButton onClick={this.sendDataWithDelay} />
+        return (
+            <React.Fragment>
+                <Modal heading="Warning" isOpen={!!this.state.error}>
+                    <p>{this.state.error}</p>
+                    <p>This message will close automatically.</p>
+                </Modal>
 
-            <div id="spread">
-                <div id="cards" className={this.getArtworkKey()}>
-                    {this.props.data.spread.map(this.getCardElement)}
+                <DungeonMasterViewButton onClick={this.sendDataWithDelay} />
+
+                <div id="spread">
+                    <div id="cards" className={this.getArtworkKey()}>
+                        {this.props.data.spread.map(this.getCardElement)}
+                    </div>
                 </div>
-            </div>
-        </React.Fragment>
-    );
+            </React.Fragment>
+        );
+    };
 
     /**
      * Changes the artwork for the deck.
      *
      * @private
-     * @memberof Spread
+     * @memberof PlayerView
      */
     private changeArtwork = (key: string): void => {
         localStorage.setItem('artwork', key);
@@ -165,7 +169,7 @@ class Spread extends React.Component<SpreadProps, SpreadState> {
      * Draws a card from a deck, making sure not to draw the same card twice.
      *
      * @private
-     * @memberof Spread
+     * @memberof PlayerView
      */
     private drawCard = (deckSize: number, draws: number[]): number => {
         let card = -1;
@@ -183,7 +187,7 @@ class Spread extends React.Component<SpreadProps, SpreadState> {
      * Draws all cards for the spread and updates the state accordingly.
      *
      * @private
-     * @memberof Spread
+     * @memberof PlayerView
      */
     private drawCards = (): void => {
         const highIndexes: number[] = [];
@@ -240,7 +244,7 @@ class Spread extends React.Component<SpreadProps, SpreadState> {
      * Draws a card from the high deck. Helper for {@link drawCards}.
      *
      * @private
-     * @memberof Spread
+     * @memberof PlayerView
      * @see drawCards
      */
     private drawHighCard = (indexes: number[]): number => {
@@ -257,7 +261,7 @@ class Spread extends React.Component<SpreadProps, SpreadState> {
      * Draws a card from the low deck. Helper for {@link drawCards}.
      *
      * @private
-     * @memberof Spread
+     * @memberof PlayerView
      * @see drawCards
      */
     private drawLowCard = (indexes: number[]): number => {
@@ -274,7 +278,7 @@ class Spread extends React.Component<SpreadProps, SpreadState> {
      * Returns the key for the card artwork.
      *
      * @private
-     * @memberof Spread
+     * @memberof PlayerView
      */
     private getArtworkKey = (): string => {
         return this.state.artworkKey || this.props.artworkKey;
@@ -284,7 +288,7 @@ class Spread extends React.Component<SpreadProps, SpreadState> {
      * Renders a {@link Card} component. Helper for {@link render}.
      *
      * @private
-     * @memberof Spread
+     * @memberof PlayerView
      * @see render
      */
     private getCardElement = (card: SpreadCard, index: number): JSX.Element => {
@@ -330,13 +334,13 @@ class Spread extends React.Component<SpreadProps, SpreadState> {
     };
 
     /**
-     * Receives requests from {@link Guide} and sends data in response.
+     * Receives requests from {@link DungeonMasterView} and sends data in response.
      * 
-     * For example, when {@link Guide} is refreshed and has no data available,
-     * it will ask {@link Spread} to resend.
+     * For example, when {@link DungeonMasterView} is refreshed and has no data available,
+     * it will ask {@link PlayerView} to resend.
      *
      * @private
-     * @memberof Spread
+     * @memberof PlayerView
      */
     private handleMessage = (message: Message): void => {
         switch (message.type) {
@@ -358,17 +362,17 @@ class Spread extends React.Component<SpreadProps, SpreadState> {
      * Removes cards from the deck.
      *
      * @private
-     * @memberof Spread
+     * @memberof PlayerView
      */
     private removeCards = (keys: string[]): void => {
         this.setState({deck: this.getDeck(keys)}, this.drawCards);
     };
 
     /**
-     * Broadcasts data to the Guide component.
+     * Broadcasts data to the DungeonMasterView component.
      *
      * @private
-     * @memberof Spread
+     * @memberof PlayerView
      */
     private sendData = (): void => {
         this.channel.postMessage({
@@ -380,15 +384,15 @@ class Spread extends React.Component<SpreadProps, SpreadState> {
     };
 
     /**
-     * Broadcasts data to the Guide component after a brief delay, to allow
-     * it to properly initialize after the user clicks on the GuideLink.
+     * Broadcasts data to the DungeonMasterView component after a brief delay, to allow
+     * it to properly initialize after the user clicks on the DungeonMasterViewLink.
      *
      * @private
-     * @memberof Spread
+     * @memberof PlayerView
      */
     private sendDataWithDelay = (): void => {
         setTimeout(this.sendData, 100);
     };
 }
 
-export default Spread;
+export default PlayerView;

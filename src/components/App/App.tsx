@@ -5,8 +5,8 @@ import Modal from 'react-modal';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import data from '../../data.json';
-import Guide from '../Guide/Guide';
-import Spread from '../Spread/Spread';
+import DungeonMasterView from '../DungeonMasterView/DungeonMasterView';
+import PlayerView from '../PlayerView/PlayerView';
 
 const defaultArtworkKey = 'forbidden-lore';
 
@@ -30,14 +30,14 @@ class App extends React.Component {
         return (
             <BrowserRouter>
                 <Switch>
-                    <Route path="/guide">
-                        <Guide
+                    <Route path="/dm">
+                        <DungeonMasterView
                             artworkKey={artworkKey}
                             data={data}
                         />
                     </Route>
                     <Route path="/">
-                        <Spread
+                        <PlayerView
                             artworkKey={artworkKey}
                             data={data}
                         />

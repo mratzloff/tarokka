@@ -1,42 +1,42 @@
-import './GuideButton.scss';
+import './DungeonMasterViewButton.scss';
 
 import React from 'react';
 
 import Modal from '../Modal/Modal';
 
 /**
- * React props for {@link GuideButton}.
+ * React props for {@link DungeonMasterViewButton}.
  *
- * @interface GuideButtonProps
+ * @interface DungeonMasterViewButtonProps
  */
-interface GuideButtonProps {
+interface DungeonMasterViewButtonProps {
     onClick: () => void,
 };
 
 /**
- * React state for {@link GuideButton}.
+ * React state for {@link DungeonMasterViewButton}.
  *
- * @interface GuideButtonState
+ * @interface DungeonMasterViewButtonState
  */
-interface GuideButtonState {
+interface DungeonMasterViewButtonState {
     modalOpen: boolean,
     warningAcknowledged: boolean,
 }
 
 /**
- * The button that opens {@link Guide}.
+ * The button that opens {@link DungeonMasterView}.
  *
- * @param {GuideButtonProps} props
+ * @param {DungeonMasterViewButtonProps} props
  * @returns {JSX.Element}
  */
-class GuideButton extends React.Component<GuideButtonProps, GuideButtonState> {
+class DungeonMasterViewButton extends React.Component<DungeonMasterViewButtonProps, DungeonMasterViewButtonState> {
     /**
-     * Creates an instance of GuideButton.
+     * Creates an instance of DungeonMasterViewButton.
      * 
-     * @param {GuideButtonProps} props
-     * @memberof GuideButton
+     * @param {DungeonMasterViewButtonProps} props
+     * @memberof DungeonMasterViewButton
      */
-    constructor(props: GuideButtonProps) {
+    constructor(props: DungeonMasterViewButtonProps) {
         super(props);
 
         this.state = {
@@ -48,7 +48,7 @@ class GuideButton extends React.Component<GuideButtonProps, GuideButtonState> {
     /**
      * Called by React to render the component.
      *
-     * @memberof GuideButton
+     * @memberof DungeonMasterViewButton
      */
     public render = (): JSX.Element => {
         return (
@@ -59,12 +59,12 @@ class GuideButton extends React.Component<GuideButtonProps, GuideButtonState> {
                 <Modal
                     heading="Warning"
                     isOpen={this.state.modalOpen}
-                    onOkButtonClick={this.acknowledgeWarningAndOpenGuide}
+                    onOkButtonClick={this.acknowledgeWarningAndOpenDungeonMasterView}
                     onRequestClose={this.closeModal}
                     showCancelButton={true}
                     showOkButton={true}
                 >
-                    <p>This button opens the Dungeon Master's guide to the tarokka
+                    <p>This button opens the Dungeon Master's view to the tarokka
                     reading, which contains <em>massive spoilers</em> for players
                     of <i>Curse of Strahd</i>. Be careful not to ruin the game for
                     yourself or others!</p>
@@ -80,22 +80,22 @@ class GuideButton extends React.Component<GuideButtonProps, GuideButtonState> {
      * The acknowledgment lasts until the page is reloaded.
      *
      * @private
-     * @memberof GuideButton
+     * @memberof DungeonMasterViewButton
      */
-    private acknowledgeWarningAndOpenGuide = (): void => {
+    private acknowledgeWarningAndOpenDungeonMasterView = (): void => {
         this.setState({
             modalOpen: false,
             warningAcknowledged: true,
         });
 
-        window.open('/guide', 'tarokka');
+        window.open('/dm', 'tarokka');
     };
 
     /**
      * Closes the warning modal.
      *
      * @private
-     * @memberof GuideButton
+     * @memberof DungeonMasterViewButton
      */
     private closeModal = (): void => {
         this.setState({modalOpen: false});
@@ -105,11 +105,11 @@ class GuideButton extends React.Component<GuideButtonProps, GuideButtonState> {
      * Handles the Dungeon Master's guide button click.
      *
      * @private
-     * @memberof GuideButton
+     * @memberof DungeonMasterViewButton
      */
     private handleClick = (): void => {
         if (this.state.warningAcknowledged) {
-            this.openGuide();
+            this.openDungeonMasterView();
         } else {
             this.openModal();
         }
@@ -119,9 +119,9 @@ class GuideButton extends React.Component<GuideButtonProps, GuideButtonState> {
      * Opens the Dungeon Master's guide.
      *
      * @private
-     * @memberof GuideButton
+     * @memberof DungeonMasterViewButton
      */
-    private openGuide = (): void => {
+    private openDungeonMasterView = (): void => {
         window.open('/guide', 'tarokka');
     };
 
@@ -129,11 +129,11 @@ class GuideButton extends React.Component<GuideButtonProps, GuideButtonState> {
      * Opens the warning modal.
      *
      * @private
-     * @memberof GuideButton
+     * @memberof DungeonMasterViewButton
      */
     private openModal = (): void => {
         this.setState({modalOpen: true});
     };
 }
 
-export default GuideButton;
+export default DungeonMasterViewButton;
