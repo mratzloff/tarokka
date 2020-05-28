@@ -176,7 +176,7 @@ class DungeonMasterView extends React.Component<DungeonMasterViewProps, DungeonM
      * @memberof DungeonMasterView
      */
     private getCardImage = (key: string): string => {
-        return `url(images/${this.getArtworkKey()}/${key}.png)`;
+        return `/images/${this.getArtworkKey()}/${key}.png`;
     };
 
     /**
@@ -336,7 +336,6 @@ class DungeonMasterView extends React.Component<DungeonMasterViewProps, DungeonM
         }
 
         if (draw) {
-            backgroundImage = this.getCardImage(draw.key);
             locked = (this.state.lockedDrawKeys[index] === draw.key);
         }
 
@@ -351,7 +350,7 @@ class DungeonMasterView extends React.Component<DungeonMasterViewProps, DungeonM
                     />
                 </h2>
                 <div className="card">
-                    <div className="image" style={{backgroundImage}} />
+                    <img src={this.getCardImage(draw.key)} />
                     <div className="script">{description}</div>
                 </div>
             </section>

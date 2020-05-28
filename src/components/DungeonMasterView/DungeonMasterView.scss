@@ -36,9 +36,8 @@
     .card {
         display: flex;
     
-        .image {
-            background-repeat: no-repeat;
-            background-size: contain;
+        img {
+            filter: drop-shadow(1px 1px 1px #CCC);
             flex: 0 0 80px;
             height: 125px;
             width: 80px;
