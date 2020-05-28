@@ -115,9 +115,10 @@ class PlayerView extends React.Component<PlayerViewProps, PlayerViewState> {
      * @memberof PlayerView
      */
     public componentDidMount = (): void => {
+        const spread = this.props.data.spread;
+
         this.channel.onmessage = this.handleMessage;
 
-        const spread = this.props.data.spread;
         this.setState(
             {
                 deck: this.getDeck(),

@@ -26,6 +26,7 @@ interface DungeonMasterViewProps {
  * @interface DungeonMasterViewState
  */
 interface DungeonMasterViewState {
+    artworkKey: string,
     draws: Array<HighCard | LowCard>,
     error: string,
     lockedDrawKeys: (string | null)[],
@@ -82,6 +83,7 @@ class DungeonMasterView extends React.Component<DungeonMasterViewProps, DungeonM
         super(props);
 
         this.state = {
+            artworkKey: '',
             draws: [],
             error: '',
             lockedDrawKeys: [],
@@ -127,7 +129,7 @@ class DungeonMasterView extends React.Component<DungeonMasterViewProps, DungeonM
                     <div id="form">
                         <ArtworkChanger
                             artwork={this.props.data.artwork}
-                            artworkKey={this.props.artworkKey}
+                            artworkKey={this.getArtworkKey()}
                             className="form-field"
                             onChange={this.handleArtworkChange}
                         />
@@ -138,9 +140,9 @@ class DungeonMasterView extends React.Component<DungeonMasterViewProps, DungeonM
                         />
                     </div>
                     {!this.state.error &&
-                        <div id="script">
+                        <article>
                             {this.state.spread.map(this.renderCard)}
-                        </div>
+                        </article>
                     }
                 </div>
             </React.Fragment>
@@ -155,6 +157,26 @@ class DungeonMasterView extends React.Component<DungeonMasterViewProps, DungeonM
      */
     private closeModal = (): void => {
         this.setState({modalOpen: false});
+    };
+
+    /**
+     * Returns the key for the card artwork.
+     *
+     * @private
+     * @memberof DungeonMasterView
+     */
+    private getArtworkKey = (): string => {
+        return this.state.artworkKey || this.props.artworkKey;
+    };
+
+    /**
+     * Returns a CSS `url` data type ready for setting as a background image.
+     *
+     * @private
+     * @memberof DungeonMasterView
+     */
+    private getCardImage = (key: string): string => {
+        return `url(images/${this.getArtworkKey()}/${key}.png)`;
     };
 
     /**
@@ -175,6 +197,7 @@ class DungeonMasterView extends React.Component<DungeonMasterViewProps, DungeonM
      */
     private handleArtworkChange = (option: ValueType<Option>): void => {
         const key = (option as Option).value;
+        this.setState({artworkKey: key});
         this.channel.postMessage({key, type: 'change-artwork'});
     };
 
@@ -293,37 +316,32 @@ class DungeonMasterView extends React.Component<DungeonMasterViewProps, DungeonM
      * @memberof DungeonMasterView
      */
     private renderCard = (card: SpreadCard, index: number): JSX.Element => {
+        const draw = this.state.draws[index];
+
         let article = '';
+        let backgroundImage = '';
         let description: JSX.Element;
+        let locked = false;
 
         switch (card.key) {
             case 'ally':
-                description = this.renderAllyText(
-                    card,
-                    this.state.draws[index] as HighCard,
-                );
+                description = this.renderAllyText(card, draw as HighCard);
                 break;
             case 'strahd':
-                description = this.renderStrahdText(
-                    card,
-                    this.state.draws[index] as HighCard,
-                );
+                description = this.renderStrahdText(card, draw as HighCard);
                 break;
             default:
                 article = 'The ';
-                description = this.renderTreasureText(
-                    card,
-                    this.state.draws[index] as LowCard,
-                );
+                description = this.renderTreasureText(card, draw as LowCard);
         }
 
-        let locked = false;
-        if (this.state.draws[index]) {
-            locked = (this.state.lockedDrawKeys[index] === this.state.draws[index].key);
+        if (draw) {
+            backgroundImage = this.getCardImage(draw.key);
+            locked = (this.state.lockedDrawKeys[index] === draw.key);
         }
 
         return (
-            <div key={card.name}>
+            <section key={card.name}>
                 <h2>
                     {article}{card.name}
                     <LockButton
@@ -332,8 +350,11 @@ class DungeonMasterView extends React.Component<DungeonMasterViewProps, DungeonM
                         onClick={this.handleLockButtonClick}
                     />
                 </h2>
-                {description}
-            </div>
+                <div className="card">
+                    <div className="image" style={{backgroundImage}} />
+                    <div className="script">{description}</div>
+                </div>
+            </section>
         );
     };
 

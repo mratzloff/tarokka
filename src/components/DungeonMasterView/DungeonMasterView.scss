@@ -5,6 +5,10 @@
 
     background-color: #FAF7EF;
 
+    article {
+        padding: 10px 45px 30px;
+    }
+
     em {
         @include font-body-bold-italic;
     }
@@ -17,6 +21,7 @@
     }
 
     ol {
+        margin-top: 0;
         padding-left: 20px;
 
         ol li {
@@ -26,6 +31,22 @@
 
     strong {
         @include font-body-bold;
+    }
+
+    .card {
+        display: flex;
+    
+        .image {
+            background-repeat: no-repeat;
+            background-size: contain;
+            flex: 0 0 80px;
+            height: 125px;
+            width: 80px;
+        }
+
+        .script {
+            padding-left: 15px;
+        }
     }
 
     .form-field {
@@ -49,9 +70,5 @@
         background-color: #EEECE1;
         border-bottom: 1px solid #E0E1D2;
         padding: 15px 45px 5px;
-    }
-
-    #script {
-        padding: 10px 45px 30px;
     }
 }
