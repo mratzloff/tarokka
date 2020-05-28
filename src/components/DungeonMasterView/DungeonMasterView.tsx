@@ -319,7 +319,6 @@ class DungeonMasterView extends React.Component<DungeonMasterViewProps, DungeonM
         const draw = this.state.draws[index];
 
         let article = '';
-        let backgroundImage = '';
         let description: JSX.Element;
         let locked = false;
 
@@ -350,7 +349,7 @@ class DungeonMasterView extends React.Component<DungeonMasterViewProps, DungeonM
                     />
                 </h2>
                 <div className="card">
-                    <img src={this.getCardImage(draw.key)} />
+                    <img alt={card.name} src={this.getCardImage(draw.key)} />
                     <div className="script">{description}</div>
                 </div>
             </section>
