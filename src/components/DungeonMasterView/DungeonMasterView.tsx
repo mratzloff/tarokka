@@ -123,7 +123,7 @@ class DungeonMasterView extends React.Component<DungeonMasterViewProps, DungeonM
                     <p>{this.state.error}</p>
                 </Modal>
 
-                <div id="guide">
+                <div id="dungeon-master-view">
                     <div id="form">
                         <ArtworkChanger
                             artwork={this.props.data.artwork}

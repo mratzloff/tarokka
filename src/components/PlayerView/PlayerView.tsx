@@ -66,7 +66,7 @@ interface PlayerViewState {
  *
  * @type Message
  */
-type Message = ChangeArtworkMessage | SendDataMessage;
+type Message = ChangeArtworkMessage | RemoveCardsMessage | SendDataMessage;
 
 /**
  * The spread, or arrangement of cards, for a given tarokka reading.
@@ -145,7 +145,7 @@ class PlayerView extends React.Component<PlayerViewProps, PlayerViewState> {
 
                 <DungeonMasterViewButton onClick={this.sendDataWithDelay} />
 
-                <div id="spread">
+                <div id="player-view">
                     <div id="cards" className={this.getArtworkKey()}>
                         {this.props.data.spread.map(this.getCardElement)}
                     </div>
