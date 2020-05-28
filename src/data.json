@@ -7,6 +7,10 @@
         {
             "key": "gale-force-nine",
             "name": "Gale Force Nine"
+        },
+        {
+            "key": "gale-force-nine-colorized",
+            "name": "Gale Force Nine (colorized)"
         }
     ],
     "deck": {
