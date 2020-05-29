@@ -1,18 +1,18 @@
 $artwork-dimensions: (
-    "forbidden-lore": (
-        "height": 527px,
-        "scale": 0.45,
-        "width": 342px,
+    'forbidden-lore': (
+        'height': 527px,
+        'scale': 0.45,
+        'width': 342px,
     ),
-    "gale-force-nine": (
-        "height": 840px,
-        "scale": 0.28,
-        "width": 600px,
+    'gale-force-nine': (
+        'height': 840px,
+        'scale': 0.28,
+        'width': 600px,
     ),
-    "gale-force-nine-colorized": (
-        "height": 840px,
-        "scale": 0.28,
-        "width": 600px,
+    'gale-force-nine-colorized': (
+        'height': 840px,
+        'scale': 0.28,
+        'width': 600px,
     ),
 );
 
@@ -24,41 +24,41 @@ $artwork-dimensions: (
     #cards {
         display: grid;
         grid-template-areas:
-            ". b ."
-            "a e c"
-            ". d .";
+            '. b .'
+            'a e c'
+            '. d .';
         margin: 0 auto;
         padding: 50px 0;
     }
-    
+
     #tome {
         grid-area: a;
     }
-    
+
     #ravenkind {
         grid-area: b;
     }
-    
+
     #sunsword {
         grid-area: c;
     }
-    
+
     #ally {
         grid-area: d;
     }
-    
+
     #strahd {
         grid-area: e;
     }
-    
+
     @each $artwork, $dimensions in $artwork-dimensions {
-        $height: map-get($dimensions, "height");
-        $scale: map-get($dimensions, "scale");
-        $width: map-get($dimensions, "width");
-    
+        $height: map-get($dimensions, 'height');
+        $scale: map-get($dimensions, 'scale');
+        $width: map-get($dimensions, 'width');
+
         #cards.#{$artwork} {
             width: 3 * (($width * $scale) + 40px);
-    
+
             .card,
             .card-container {
                 height: $height * $scale;
@@ -70,18 +70,18 @@ $artwork-dimensions: (
     .card-container {
         padding: 20px;
         perspective: 1000px;
-    
+
         &.flipped .card {
             transform: rotateY(180deg);
         }
     }
-    
+
     .card {
         position: relative;
         transition: 0.8s;
         transform-style: preserve-3d;
     }
-    
+
     .back,
     .front {
         -webkit-backface-visibility: hidden;
@@ -97,12 +97,12 @@ $artwork-dimensions: (
         top: 0;
         width: 100%;
     }
-    
+
     .back {
         background-image: url(../../assets/images/back.png);
         z-index: 2;
     }
-    
+
     .front {
         transform: rotateY(180deg);
     }

@@ -3,7 +3,7 @@
 #dungeon-master-view {
     @include font-body;
 
-    background-color: #FAF7EF;
+    background-color: #faf7ef;
 
     article {
         padding: 10px 45px 30px;
@@ -35,9 +35,9 @@
 
     .card {
         display: flex;
-    
+
         img {
-            filter: drop-shadow(1px 1px 1px #CCC);
+            filter: drop-shadow(1px 1px 1px #ccc);
             flex: 0 0 80px;
             height: 125px;
             width: 80px;
@@ -55,7 +55,7 @@
         margin-bottom: 10px;
 
         label {
-            color: #58170D;
+            color: #58170d;
             margin-right: 10px;
             width: 105px;
         }
@@ -66,8 +66,8 @@
     }
 
     #form {
-        background-color: #EEECE1;
-        border-bottom: 1px solid #E0E1D2;
+        background-color: #eeece1;
+        border-bottom: 1px solid #e0e1d2;
         padding: 15px 45px 5px;
     }
 }

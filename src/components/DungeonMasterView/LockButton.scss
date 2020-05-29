@@ -1,8 +1,8 @@
 button.lock {
-    background-color: #EEECE1;
-    border: 1px solid #E0E1D2;
+    background-color: #eeece1;
+    border: 1px solid #e0e1d2;
     border-radius: 3px;
-    color: #58170D;
+    color: #58170d;
     cursor: pointer;
     display: inline-block;
     font-family: monospace;
@@ -15,8 +15,8 @@ button.lock {
     text-transform: uppercase;
 
     &.locked {
-        background-color: #58170D;
+        background-color: #58170d;
         border: none;
-        color: #EEECE1;
+        color: #eeece1;
     }
 }

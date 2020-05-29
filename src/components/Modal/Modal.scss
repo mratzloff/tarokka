@@ -13,12 +13,12 @@
 .modal {
     @include font-body;
 
-    background-color: #FAF7EF;
+    background-color: #faf7ef;
     color: #111;
     height: 225px;
     margin: 0 auto;
     outline-offset: -14px;
-    outline: 2px solid #D0B47B;
+    outline: 2px solid #d0b47b;
     overflow: none;
     padding: 50px;
     transform: translate(0, 50vh) translate(0, -65%);
@@ -31,7 +31,7 @@
         background-color: transparent;
         font-size: 16px;
         margin: 0 10px;
-    
+
         &:hover {
             border-bottom: 2px solid #111;
         }
@@ -60,7 +60,7 @@
         background-image: url(../../assets/images/blood.png);
         background-position: 150px 0;
         background-repeat: no-repeat;
-        color: #D31818;
+        color: #d31818;
         font-family: HerrVonMuellerhoff;
         font-size: 60px;
         line-height: 80px;
