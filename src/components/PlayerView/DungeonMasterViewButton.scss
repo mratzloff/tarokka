@@ -1,22 +1,15 @@
 @import '../../assets/css/fonts';
 @import '../../assets/css/mixins';
 
-#guide-link {
+#dungeon-master-view-button {
+    cursor: pointer;
+    opacity: 0.5;
     position: absolute;
-    top: 20px;
-    right: 20px;
-    text-align: right;
+    right: 30px;
+    top: 25px;
+    transition: 0.5s;
 
-    button {
-        @include button;
-
-        background-color: black;
-        border: 1px solid #333;
-        color: #333;
-    
-        &:hover {
-            background-color: #111;
-            color: #444;
-        }
+    &:hover {
+        opacity: 1;
     }
 }

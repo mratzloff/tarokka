@@ -2,6 +2,7 @@ import './DungeonMasterViewButton.scss';
 
 import React from 'react';
 
+import dmScreenImage from '../../assets/images/dm-screen.svg';
 import Modal from '../Modal/Modal';
 
 /**
@@ -53,9 +54,6 @@ class DungeonMasterViewButton extends React.Component<DungeonMasterViewButtonPro
     public render = (): JSX.Element => {
         return (
             <React.Fragment>
-                <div id="guide-link">
-                    <button onClick={this.handleClick}>•••</button>
-                </div>
                 <Modal
                     heading="Warning"
                     isOpen={this.state.modalOpen}
@@ -71,6 +69,13 @@ class DungeonMasterViewButton extends React.Component<DungeonMasterViewButtonPro
 
                     <p>Are you a Dungeon Master running <i>Curse of Strahd</i>?</p>
                 </Modal>
+
+                <img
+                    alt="Dungeon Master's view"
+                    id="dungeon-master-view-button"
+                    onClick={this.handleClick}
+                    src={dmScreenImage}
+                />
             </React.Fragment>
         );
     };

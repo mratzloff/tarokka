@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="25px" viewBox="0 0 40 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Canvas" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Dungeon-Master's-Screen">
+            <g id="Group">
+                <polygon id="Polygon" fill="#919191" points="9.33618844 7.65992815 9.33618844 24.6526606 1.57907298e-14 16.9927325 5.32907052e-15 0"></polygon>
+                <polygon id="Polygon" fill="#535353" transform="translate(35.068094, 12.326330) scale(-1, 1) translate(-35.068094, -12.326330) " points="39.7361884 7.65992815 39.7361884 24.6526606 30.4 16.9927325 30.4 0"></polygon>
+                <polygon id="Rectangle" fill="#666666" points="9.33618844 7.65992815 30.6638116 7.65992815 30.6638116 24.6526606 9.33618844 24.6526606"></polygon>
+            </g>
+            <text id="DM" fill="#EEEEEE" font-family="TrebuchetMS-Bold, Trebuchet MS" font-size="9" font-weight="bold">
+                <tspan x="13.7553711" y="19.5">DM</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
