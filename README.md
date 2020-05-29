@@ -18,6 +18,7 @@ The idea is that you can present the player view over your Google Meet or Zoom c
 - Cards are revealed with a 3D effect
 - Any card can be removed from the deck entirely, to prevent awkward pacing issues with your campaign
 - Each card can be locked, to guarantee that card will always be the one revealed
+- All changes are saved by your browser
 
 ## What is tarokka?
 
