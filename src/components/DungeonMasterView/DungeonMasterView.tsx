@@ -186,7 +186,7 @@ class DungeonMasterView extends React.Component<DungeonMasterViewProps, DungeonM
      * @memberof DungeonMasterView
      */
     private getLockedCardKeys = (spread: SpreadCard[]): (string | null)[] => {
-        return spread.map(each => localStorage.getItem(each.key));
+        return (spread || []).map(each => localStorage.getItem(each.key));
     };
 
     /**
@@ -236,11 +236,11 @@ class DungeonMasterView extends React.Component<DungeonMasterViewProps, DungeonM
         }
 
         this.setState({
-            draws: message.draws,
-            error: message.error,
+            draws: message.draws || [],
+            error: message.error || '',
             lockedDrawKeys: this.getLockedCardKeys(message.spread),
             modalOpen: !!message.error,
-            spread: message.spread,
+            spread: message.spread || [],
         });
     };
 
