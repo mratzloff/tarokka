@@ -122,7 +122,7 @@ class DungeonMasterViewButton extends React.Component<DungeonMasterViewButtonPro
      * @memberof DungeonMasterViewButton
      */
     private openDungeonMasterView = (): void => {
-        window.open('/guide', 'tarokka');
+        window.open('/dm', 'tarokka');
     };
 
     /**
