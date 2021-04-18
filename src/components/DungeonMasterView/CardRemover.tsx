@@ -28,11 +28,11 @@ class CardRemover extends React.Component<CardRemoverProps> {
         const id = 'card-remover';
 
         const selectStyles = {
-            container: (provided: Partial<Styles>) => ({
+            container: (provided: Partial<Styles<Option[], boolean>>) => ({
                 ...provided,
                 flex: 1,
             }),
-        } as Styles;
+        } as Styles<Option[], boolean>;
 
         return (
             <div className={this.props.className}>
@@ -55,7 +55,7 @@ class CardRemover extends React.Component<CardRemoverProps> {
      * @private
      * @memberof CardRemover
      */
-    private getDefaultOptions = (): ValueType<Option[]> => {
+    private getDefaultOptions = (): ValueType<Option[], boolean> => {
         const storedValue = localStorage.getItem('removed-cards');
         if (!storedValue) {
             return [];
@@ -156,7 +156,7 @@ class CardRemover extends React.Component<CardRemoverProps> {
      * @private
      * @memberof CardRemover
      */
-    private handleChange = (options: ValueType<Option[]>): void => {
+    private handleChange = (options: ValueType<Option[], boolean>): void => {
         if (!options) { // Occurs when ActionMeta<Option[]>.action === 'remove-value'
             options = [];
         }

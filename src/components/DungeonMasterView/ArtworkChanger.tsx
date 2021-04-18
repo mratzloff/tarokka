@@ -10,7 +10,7 @@ interface ArtworkChangerProps {
     artwork: Artwork[],
     artworkKey: string,
     className?: string,
-    onChange?: (option: ValueType<Option>) => void,
+    onChange?: (option: ValueType<Option, boolean>) => void,
 };
 
 /**
@@ -31,11 +31,11 @@ function ArtworkChanger(props: ArtworkChangerProps): JSX.Element {
     });
 
     const selectStyles = {
-        container: (provided: Partial<Styles>) => ({
+        container: (provided: Partial<Styles<Option, boolean>>) => ({
             ...provided,
             flex: 1,
         }),
-    } as Styles;
+    } as Styles<Option, boolean>;
 
     return (
         <div className={props.className}>

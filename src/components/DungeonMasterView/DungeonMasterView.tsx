@@ -195,7 +195,7 @@ class DungeonMasterView extends React.Component<DungeonMasterViewProps, DungeonM
      * @private
      * @memberof DungeonMasterView
      */
-    private handleArtworkChange = (option: ValueType<Option>): void => {
+    private handleArtworkChange = (option: ValueType<Option, boolean>): void => {
         const key = (option as Option).value;
         this.setState({artworkKey: key});
         this.channel.postMessage({key, type: 'change-artwork'});

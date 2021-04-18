@@ -197,7 +197,7 @@ class PlayerView extends React.Component<PlayerViewProps, PlayerViewState> {
         let draws: Array<HighCard | LowCard> = [];
         let error = '';
 
-        for (let card of this.props.data.spread) {
+        this.props.data.spread.forEach(card => {
             const drawKey = localStorage.getItem(card.key);
             let draw: HighCard | LowCard;
             let index = -1;
@@ -218,7 +218,7 @@ class PlayerView extends React.Component<PlayerViewProps, PlayerViewState> {
                 if (index === -1) {
                     draws = [];
                     error = this.deckTooSmallError;
-                    break;
+                    return;
                 }
                 highIndexes.push(index);
                 draw = this.state.deck.high[index];
@@ -229,14 +229,14 @@ class PlayerView extends React.Component<PlayerViewProps, PlayerViewState> {
                 if (index === -1) {
                     draws = [];
                     error = this.deckTooSmallError;
-                    break;
+                    return;
                 }
                 lowIndexes.push(index);
                 draw = this.state.deck.low[index];
             }
 
             draws.push(draw);
-        }
+        });
 
         this.setState({draws, error}, this.sendData);
     };
