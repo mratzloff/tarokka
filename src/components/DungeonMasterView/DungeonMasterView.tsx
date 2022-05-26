@@ -3,7 +3,7 @@ import './DungeonMasterView.scss';
 import {BroadcastChannel} from 'broadcast-channel';
 import React from 'react';
 import nl2br from 'react-nl2br';
-import {ValueType} from 'react-select';
+import {OnChangeValue} from 'react-select';
 
 import Modal from '../Modal/Modal';
 import ArtworkChanger from './ArtworkChanger';
@@ -195,7 +195,7 @@ class DungeonMasterView extends React.Component<DungeonMasterViewProps, DungeonM
      * @private
      * @memberof DungeonMasterView
      */
-    private handleArtworkChange = (option: ValueType<Option, boolean>): void => {
+    private handleArtworkChange = (option: OnChangeValue<Option, boolean>): void => {
         const key = (option as Option).value;
         this.setState({artworkKey: key});
         this.channel.postMessage({key, type: 'change-artwork'});

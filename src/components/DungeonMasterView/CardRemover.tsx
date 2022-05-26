@@ -1,5 +1,5 @@
 import React from 'react';
-import Select, {GroupedOptionsType, GroupType, Styles, ValueType} from 'react-select';
+import Select, {GroupBase, OnChangeValue, StylesConfig} from 'react-select';
 
 /**
  * React props for {@link CardRemover}.
@@ -28,11 +28,11 @@ class CardRemover extends React.Component<CardRemoverProps> {
         const id = 'card-remover';
 
         const selectStyles = {
-            container: (provided: Partial<Styles<Option[], boolean>>) => ({
-                ...provided,
+            container: (base: Partial<StylesConfig<Option[], boolean>>) => ({
+                ...base,
                 flex: 1,
             }),
-        } as Styles<Option[], boolean>;
+        } as any;
 
         return (
             <div className={this.props.className}>
@@ -55,7 +55,7 @@ class CardRemover extends React.Component<CardRemoverProps> {
      * @private
      * @memberof CardRemover
      */
-    private getDefaultOptions = (): ValueType<Option[], boolean> => {
+    private getDefaultOptions = (): OnChangeValue<Option[], boolean> => {
         const storedValue = localStorage.getItem('removed-cards');
         if (!storedValue) {
             return [];
@@ -97,7 +97,7 @@ class CardRemover extends React.Component<CardRemoverProps> {
      * @private
      * @memberof CardRemover
      */
-    private getHighOptionGroups = (): GroupedOptionsType<Option> => {
+    private getHighOptionGroups = (): ReadonlyArray<GroupBase<Option>> => {
         const options = this.props.deck.high.map(each => this.getOption(each));
 
         options.sort((a: Option, b: Option): number => {
@@ -113,8 +113,8 @@ class CardRemover extends React.Component<CardRemoverProps> {
      * @private
      * @memberof CardRemover
      */
-    private getLowOptionGroups = (): GroupedOptionsType<Option> => {
-        const result: GroupType<Option>[] = [];
+    private getLowOptionGroups = (): ReadonlyArray<GroupBase<Option>> => {
+        const result: GroupBase<Option>[] = [];
         const options: Dictionary<Option[]> = {};
 
         this.props.deck.low.forEach(each => {
@@ -132,7 +132,10 @@ class CardRemover extends React.Component<CardRemoverProps> {
             result.push({label: `Low: ${location}`, options: opts});
         }
 
-        result.sort((a: GroupType<Option>, b: GroupType<Option>): number => {
+        result.sort((a: GroupBase<Option>, b: GroupBase<Option>): number => {
+            if (!a.label || !b.label) {
+                return 0;
+            }
             return a.label.localeCompare(b.label);
         });
 
@@ -156,7 +159,7 @@ class CardRemover extends React.Component<CardRemoverProps> {
      * @private
      * @memberof CardRemover
      */
-    private handleChange = (options: ValueType<Option[], boolean>): void => {
+    private handleChange = (options: OnChangeValue<Option[], boolean>): void => {
         if (!options) { // Occurs when ActionMeta<Option[]>.action === 'remove-value'
             options = [];
         }

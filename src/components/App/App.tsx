@@ -2,7 +2,7 @@ import './App.scss';
 
 import React from 'react';
 import Modal from 'react-modal';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
 import data from '../../data.json';
 import DungeonMasterView from '../DungeonMasterView/DungeonMasterView';
@@ -29,20 +29,20 @@ class App extends React.Component {
 
         return (
             <BrowserRouter>
-                <Switch>
-                    <Route path="/dm">
+                <Routes>
+                    <Route path="/dm" element={
                         <DungeonMasterView
                             artworkKey={artworkKey}
                             data={data}
-                        />
-                    </Route>
-                    <Route path="/">
+                        />}
+                    />
+                    <Route path="/" element={
                         <PlayerView
                             artworkKey={artworkKey}
                             data={data}
-                        />
-                    </Route>
-                </Switch>
+                        />}
+                    />
+                </Routes>
             </BrowserRouter>
         );
     };

@@ -14,8 +14,8 @@ interface ModalProps extends ReactModal.Props {
 };
 
 function Modal(props: ModalProps): JSX.Element {
-    let cancelButtonLabel = props.cancelButtonLabel || 'Cancel';
-    let okButtonLabel = props.okButtonLabel || 'OK';
+    const cancelButtonLabel = props.cancelButtonLabel || 'Cancel';
+    const okButtonLabel = props.okButtonLabel || 'OK';
 
     return (
         <ReactModal

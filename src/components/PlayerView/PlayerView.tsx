@@ -76,7 +76,7 @@ type Message = ChangeArtworkMessage | RemoveCardsMessage | SendDataMessage;
  */
 class PlayerView extends React.Component<PlayerViewProps, PlayerViewState> {
     readonly deckTooSmallError =
-        `The deck is too small, and there aren't enough cards for a reading. ` +
+        `The deck is too small and there aren't enough cards for a reading. ` +
         `Please re-add some high or low cards that were previously removed in ` +
         `the Dungeon Master's view.`;
 

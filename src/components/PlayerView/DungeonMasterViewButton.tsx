@@ -63,9 +63,9 @@ class DungeonMasterViewButton extends React.Component<DungeonMasterViewButtonPro
                     showOkButton={true}
                 >
                     <p>This button opens the Dungeon Master's view to the tarokka
-                    reading, which contains <em>massive spoilers</em> for players
-                    of <i>Curse of Strahd</i>. Be careful not to ruin the game for
-                    yourself or others!</p>
+                        reading, which contains <em>massive spoilers</em> for players
+                        of <i>Curse of Strahd</i>. Be careful not to ruin the game for
+                        yourself or others!</p>
 
                     <p>Are you a Dungeon Master running <i>Curse of Strahd</i>?</p>
                 </Modal>

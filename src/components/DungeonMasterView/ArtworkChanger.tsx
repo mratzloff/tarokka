@@ -1,5 +1,5 @@
 import React from 'react';
-import Select, {Styles, ValueType} from 'react-select';
+import Select, {GroupBase, OnChangeValue, StylesConfig} from 'react-select';
 
 /**
  * React props for {@link ArtworkChanger}.
@@ -10,7 +10,7 @@ interface ArtworkChangerProps {
     artwork: Artwork[],
     artworkKey: string,
     className?: string,
-    onChange?: (option: ValueType<Option, boolean>) => void,
+    onChange?: (option: OnChangeValue<Option, boolean>) => void,
 };
 
 /**
@@ -31,11 +31,11 @@ function ArtworkChanger(props: ArtworkChangerProps): JSX.Element {
     });
 
     const selectStyles = {
-        container: (provided: Partial<Styles<Option, boolean>>) => ({
-            ...provided,
+        container: (base: Partial<StylesConfig<Option, boolean, GroupBase<Option>>>) => ({
+            ...base,
             flex: 1,
         }),
-    } as Styles<Option, boolean>;
+    } as any;
 
     return (
         <div className={props.className}>
